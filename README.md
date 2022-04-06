@@ -1,10 +1,5 @@
-# dApp-OnlineVote
-dApp Vote Online System
-@RobertBradu
+This example was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Project for final year project, computer science Bedfordshire University
+It is linked to the dapp-core package in the parent directory for development purposes.
 
-## Requirements
-
-* Node.js version 12.16.2+
-* Npm version 6.14.4+
+You can run `npm install` and then `npm start` to test your package.

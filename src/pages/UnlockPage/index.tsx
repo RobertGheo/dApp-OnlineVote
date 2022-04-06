@@ -4,9 +4,9 @@ import { routeNames } from 'routes';
 
 export const UnlockRoute: () => JSX.Element = () => {
   const {
-    //ExtensionLoginButton,
+    ExtensionLoginButton,
     WebWalletLoginButton,
-    //LedgerLoginButton,
+    LedgerLoginButton,
     WalletConnectLoginButton
   } = DappUI;
   const { isLoggedIn } = useGetLoginInfo();
@@ -25,21 +25,19 @@ export const UnlockRoute: () => JSX.Element = () => {
             <h4 className='mb-4'>Login</h4>
             <p className='mb-4'>pick a login method</p>
 
-            {/*
-            \<ExtensionLoginButton
+            <ExtensionLoginButton
               callbackRoute={routeNames.dashboard}
               loginButtonText={'Extension'}
-            />*/}
+            />
             <WebWalletLoginButton
               callbackRoute={routeNames.dashboard}
               loginButtonText={'Web wallet'}
             />
-            {/*}
             <LedgerLoginButton
               loginButtonText={'Ledger'}
               callbackRoute={routeNames.dashboard}
               className={'test-class_name'}
-            />*/}
+            />
             <WalletConnectLoginButton
               callbackRoute={routeNames.dashboard}
               loginButtonText={'Maiar'}
