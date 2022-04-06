@@ -10,7 +10,7 @@ const Navbar = () => {
   const { address } = useGetAccountInfo();
 
   const handleLogout = () => {
-    logout(`${window.location.origin}/unlock`);
+    logout(`${window.location.origin}/`);
   };
 
   const isLoggedIn = Boolean(address);
