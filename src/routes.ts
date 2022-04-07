@@ -34,7 +34,7 @@ const routes: Array<any> = [
 
 const mappedRoutes = routes.map((route) => {
   const title = route.title
-    ? `${route.title} • Elrond ${dAppName}`
+    ? `${route.title} • ${dAppName}`
     : `Elrond ${dAppName}`;
 
   const requiresAuth = Boolean(route.authenticatedRoute);

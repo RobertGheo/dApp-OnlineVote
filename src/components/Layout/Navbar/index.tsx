@@ -10,26 +10,29 @@ const Navbar = () => {
   const { address } = useGetAccountInfo();
 
   const handleLogout = () => {
-    logout(`${window.location.origin}`);
+    logout(`${window.location.origin}${routeNames.home}`);
   };
 
   const isLoggedIn = Boolean(address);
 
   return (
-    <BsNavbar className='bg-white border-bottom px-4 py-3'>
+    <BsNavbar className='bg-light border-bottom border-info px-5 py-3'>
       <div className='container-fluid'>
         <Link
           className='d-flex align-items-center navbar-brand mr-0'
           to={isLoggedIn ? routeNames.dashboard : routeNames.home}
         >
           <ElrondLogo className='elrond-logo' />
-          <span className='dapp-name text-muted'>{dAppName}</span>
+          <span className='dapp-name text-info'>{dAppName}</span>
         </Link>
 
         <Nav className='ml-auto'>
           {isLoggedIn && (
             <NavItem>
-              <button className='btn btn-link' onClick={handleLogout}>
+              <button
+                className='btn btn-outline-info btn-lg'
+                onClick={handleLogout}
+              >
                 Close
               </button>
             </NavItem>
