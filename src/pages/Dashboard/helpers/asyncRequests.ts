@@ -17,7 +17,7 @@ const fetchTransactions = (url: string) =>
     timeout
   }: GetLatestTransactionsType) {
     try {
-      const { data } = await axios.get(`${apiAddress}${url}`, {
+      const { data } = await axios.get(`${apiAddress}${url}/`, {
         params: {
           sender: address,
           receiver: contractAddress,

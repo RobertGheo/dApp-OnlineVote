@@ -3,6 +3,7 @@ import withPageTitle from './components/PageTitle';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import Transaction from './pages/Transaction';
+import UnlockRoute from './pages/UnlockPage';
 
 export const routeNames = {
   home: '/',
@@ -18,6 +19,11 @@ const routes: Array<any> = [
     path: routeNames.home,
     title: 'Home',
     component: Home
+  },
+  {
+    path: routeNames.unlock,
+    title: 'UnlockRoute',
+    component: UnlockRoute
   },
   {
     path: routeNames.dashboard,
