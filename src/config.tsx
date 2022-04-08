@@ -5,4 +5,4 @@ export const contractAddress1 = '';
 
 export const contractAddress2 = '';
 
-export const dAppName = 'Online Vote Dapp';
+export const dAppName = 'TSI - Online Voting Dapp';

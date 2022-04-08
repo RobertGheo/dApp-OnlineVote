@@ -9,8 +9,8 @@ const Dashboard = () => {
       <div className='row'>
         <div className='col-12 col-md-10 mx-auto'>
           <div className='card shadow-sm rounded border-0'>
-            <div className='card-body flex-column p-1'>
-              <div className='card-group'>
+            <div className='card-body flex-column p-2'>
+              <div className='card-deck'>
                 <div className='card rounded border-0  mb-2 bg-primary'>
                   <div className='card-body text-center p-4'>
                     <TopInfo />
