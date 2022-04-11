@@ -56,20 +56,24 @@ const Home = () => {
                     </h4>
                     <div className='col-12 col-md-10 col-lg-12 mx-auto'>
                       <div className='card-deck py-4 px-4'>
-                        <div className='card d-flex justify-content-center p-3 shadow border-primary bg-light rounded border-1'>
-                          <h3 className='text-center mt-3 text-primary'>
-                            Conservative Party Votes
-                          </h3>
-                          <div className='card d-flex justify-content-center p-4 bg-light border-1'>
-                            <h3 className='text-center'>45544444</h3>
+                        <div className='card d-flex justify-content-center p-1 shadow border-primary bg-primary rounded border-1'>
+                          <div className='card bg-light border-primary border-1 p-2 m-0'>
+                            <h3 className='text-center mt-3 text-primary'>
+                              Conservative Party Votes
+                            </h3>
+                            <div className='card d-flex justify-content-center p-4 bg-light border-0'>
+                              <h3 className='text-center'>45544444</h3>
+                            </div>
                           </div>
                         </div>
-                        <div className='card d-flex justify-content-center  p-3 shadow border-danger bg-light rounded border-1'>
-                          <h3 className='text-center mt-3 text-danger'>
-                            Labour Party V
-                          </h3>
-                          <div className='card d-flex justify-content-center p-4 bg-light border-1'>
-                            <h3 className='text-center'>45444445</h3>
+                        <div className='card d-flex justify-content-center  p-1 shadow border-danger bg-danger rounded border-1'>
+                          <div className='card bg-light border-danger border-1 p-2 m-0'>
+                            <h3 className='text-center mt-3 text-danger'>
+                              Labour Party Votes
+                            </h3>
+                            <div className='card d-flex justify-content-center p-4 bg-light border-0'>
+                              <h3 className='text-center'>45444445</h3>
+                            </div>
                           </div>
                         </div>
                       </div>
