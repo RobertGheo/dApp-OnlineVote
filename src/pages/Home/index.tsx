@@ -41,15 +41,42 @@ const Home = () => {
           <div className='d-flex justify-content-center'>
             <div className='row  w-100 py-4 px-2'>
               <div className='col-10 col-md-10 col-lg-12 mx-auto'>
-                <div className='card shadow border-danger bg-light  border-1'>
-                  <div className='card-header bg-light border-danger border-1'>
+                <div className='card shadow border-info bg-light  border-1'>
+                  <div className='card-header bg-light border-info border-1'>
                     <h2 className='text-center font-weight-bold mt-1'>
                       General election United Kindom - 2024
                     </h2>
-                    <h3></h3>
                   </div>
-                  <div className='card-body '>
-                    <h3></h3>
+                  <div className='card-body p-3'>
+                    <h3 className='text-center'>
+                      The Race for U.K. Prime Minister:
+                    </h3>
+                    <h4 className='text-center'>
+                      Two Parties and Two Leaders.
+                    </h4>
+                    <div className='col-12 col-md-10 col-lg-12 mx-auto'>
+                      <div className='card-deck py-4 px-4'>
+                        <div className='card d-flex justify-content-center p-3 shadow border-primary bg-light rounded border-1'>
+                          <h3 className='text-center mt-3 text-primary'>
+                            Conservative Party Votes
+                          </h3>
+                          <div className='card d-flex justify-content-center p-4 bg-light border-1'>
+                            <h3 className='text-center'>45544444</h3>
+                          </div>
+                        </div>
+                        <div className='card d-flex justify-content-center  p-3 shadow border-danger bg-light rounded border-1'>
+                          <h3 className='text-center mt-3 text-danger'>
+                            Labour Party V
+                          </h3>
+                          <div className='card d-flex justify-content-center p-4 bg-light border-1'>
+                            <h3 className='text-center'>45444445</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <h4 className='text-center text-secondary'>
+                      Autonomus Counting
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -85,7 +112,9 @@ const Home = () => {
                 </div>
                 <div className='card-footer'>
                   <div className='mt-3'>
-                    <span className='opacity-6 mr-1'>Contract address:</span>
+                    <span className='opacity-6 mr-1'>
+                      Smart Contract Address:
+                    </span>
                     <span className='opacity-6 mr-1'>
                       <a
                         className='text-primary'
@@ -130,7 +159,9 @@ const Home = () => {
                 </div>
                 <div className='card-footer'>
                   <div className='mt-3'>
-                    <span className='opacity-6 mr-1'>Contract address:</span>
+                    <span className='opacity-6 mr-1'>
+                      Smart Contract address:
+                    </span>
                     <span className='opacity-6 mr-1'>
                       <a
                         className='text-danger'
