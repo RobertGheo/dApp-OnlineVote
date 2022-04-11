@@ -1,5 +1,6 @@
 import React from 'react';
 import { DappUI, useGetLoginInfo } from '@elrondnetwork/dapp-core';
+import { Nav } from 'react-bootstrap';
 import { routeNames } from 'routes';
 
 export const UnlockRoute: () => JSX.Element = () => {
@@ -17,9 +18,20 @@ export const UnlockRoute: () => JSX.Element = () => {
     }
   }, [isLoggedIn]);
 
+  const getReadPage = () => {
+    const getLoginPage = `${window.location.origin}`;
+    console.log(getLoginPage);
+    if (`${window.location.origin}${routeNames.unlock}` == getLoginPage) {
+      true;
+    }
+  };
+  const checkPage = getReadPage();
+  const isCheckPage = Boolean(checkPage);
+
   return (
     <div className='home d-flex flex-fill align-items-center'>
       <div className='m-auto' data-testid='unlockPage'>
+        <Nav>{isCheckPage}</Nav>
         <div className='card my-4 text-center'>
           <div className='card-body py-4 px-2 px-sm-2 mx-lg-4'>
             <h4 className='mb-4'>Login</h4>

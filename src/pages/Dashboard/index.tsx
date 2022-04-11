@@ -5,13 +5,13 @@ import Transactions from './Transactions';
 
 const Dashboard = () => {
   return (
-    <div className='container py-4'>
-      <div className='row'>
-        <div className='col-12 col-md-10 mx-auto'>
-          <div className='card shadow-sm rounded border-0'>
-            <div className='card-body flex-column p-2'>
-              <div className='card-deck'>
-                <div className='card rounded border-0  mb-2 bg-primary'>
+    <div className='container'>
+      <div className='row px-2'>
+        <div className='col-10 col-md-10 col-lg-12 mx-auto'>
+          <div className='card shadow-sm rounded border-1'>
+            <div className='card-body flex-column p-4'>
+              <div className='card-deck py-4 px-4'>
+                <div className='card rounded border-1 mr-5  mb-2 bg-primary'>
                   <div className='card-body text-center p-4'>
                     <TopInfo />
                     <Actions />

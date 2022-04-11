@@ -39,7 +39,7 @@ const Home = () => {
         </li>
         <li className='list-group-item '>
           <div className='col-10 col-md-10 col-lg-12 mx-auto'>
-            <div className='card-deck py-4 px-2'>
+            <div className='card-deck py-4 px-2 '>
               <div className='card d-flex justify-content-center shadow border-primary bg-light rounded border-1'>
                 <img
                   className='card-img-top img-fluid bg-primary p-2'
