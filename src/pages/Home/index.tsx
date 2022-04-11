@@ -12,13 +12,13 @@ const Home = () => {
   const { network } = useGetNetworkConfig();
   //const { address, account } = useGetAccountInfo();
   return (
-    <div className='container p-1 border-light bg-light'>
-      <ul className='list-group list-group-flush'>
+    <div className='container pt-5 mt-5 border-light bg-light border-1'>
+      <ul className='list-group'>
         <li className='list-group-item'>
           <div className='d-flex justify-content-center'>
             <div className='row  w-100 py-4 px-2'>
               <div className='col-10 col-md-10 col-lg-12 mx-auto'>
-                <div className='card shadow border-info bg-light rounded p-1 border-2'>
+                <div className='card shadow border-info bg-light rounded p-1 border-1'>
                   <div className='card-body text-center'>
                     <h1 className='mb-3 font-weight-bold' data-testid='title'>
                       {dAppName}
@@ -31,6 +31,25 @@ const Home = () => {
                     <h2 className='text-primary mt-3 font-weight-bold'>
                       Transparent - Secure - Immutable
                     </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li className='list-group-item'>
+          <div className='d-flex justify-content-center'>
+            <div className='row  w-100 py-4 px-2'>
+              <div className='col-10 col-md-10 col-lg-12 mx-auto'>
+                <div className='card shadow border-danger bg-light  border-1'>
+                  <div className='card-header bg-light border-danger border-1'>
+                    <h2 className='text-center font-weight-bold mt-1'>
+                      General election United Kindom - 2024
+                    </h2>
+                    <h3></h3>
+                  </div>
+                  <div className='card-body '>
+                    <h3></h3>
                   </div>
                 </div>
               </div>
@@ -69,6 +88,7 @@ const Home = () => {
                     <span className='opacity-6 mr-1'>Contract address:</span>
                     <span className='opacity-6 mr-1'>
                       <a
+                        className='text-primary'
                         href={`${network.explorerAddress}/address/${contractAddress1}`}
                         {...{
                           target: '_blank'
@@ -113,6 +133,7 @@ const Home = () => {
                     <span className='opacity-6 mr-1'>Contract address:</span>
                     <span className='opacity-6 mr-1'>
                       <a
+                        className='text-danger'
                         href={`${network.explorerAddress}/address/${contractAddress2}`}
                         {...{
                           target: '_blank'

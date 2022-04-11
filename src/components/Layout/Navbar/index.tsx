@@ -25,10 +25,10 @@ const Navbar = () => {
   const isCheckPage = Boolean(search);
 
   return (
-    <BsNavbar className='bg-light border-bottom border-info px-5 py-3'>
+    <BsNavbar className='navbar fixed-top navbar-expand-lg bg-light border-bottom border-info px-4 pr-5 py-3'>
       <div className='container-fluid'>
         <Link
-          className='d-flex align-items-center navbar-brand mr-0'
+          className='d-flex align-items-center navbar-brand ml-4'
           to={isLoggedIn ? routeNames.dashboard : routeNames.home}
         >
           <ElrondLogo className='elrond-logo' />
@@ -38,11 +38,11 @@ const Navbar = () => {
         <Nav className='ml-auto'>
           {isLoggedIn && (
             <NavItem>
-              <div className='bg-light shadow border-1 w-100'>
-                <div className='card d-flex  flex-row bd-highlight bg-light border-0'>
+              <div className='bg-light shadow border-1'>
+                <div className='card d-flex flex-row bd-highlight bg-light border-1'>
                   <div className='py-2 px-4 bd-highlight mt-1 text-truncate'>
                     <a
-                      className='opacity-6 text-muted'
+                      className='opacity-7 text-muted'
                       href={`${network.explorerAddress}/address/${address}`}
                       {...{
                         target: '_blank'
