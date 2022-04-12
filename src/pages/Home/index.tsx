@@ -26,7 +26,7 @@ const Home = () => {
 
                     <h5 className='mb-2'>
                       An descentralised online voting system developed on the
-                      Network.
+                      Elrond Network.
                     </h5>
                     <h2 className='text-primary mt-3 font-weight-bold'>
                       Transparent - Secure - Immutable
@@ -44,11 +44,11 @@ const Home = () => {
                 <div className='card shadow border-info bg-light  border-1'>
                   <div className='card-header bg-light border-info border-1'>
                     <h2 className='text-center font-weight-bold mt-1'>
-                      General election United Kindom - 2024
+                      General Election in United Kindom - 2024
                     </h2>
                   </div>
                   <div className='card-body p-3'>
-                    <h3 className='text-center'>
+                    <h3 className='text-center font-weight-bold'>
                       The Race for U.K. Prime Minister:
                     </h3>
                     <h4 className='text-center'>
@@ -79,8 +79,34 @@ const Home = () => {
                       </div>
                     </div>
                     <h4 className='text-center text-secondary'>
-                      Autonomus Counting
+                      Autonomus Counting&nbsp;
                     </h4>
+                    <div className='d-flex justify-content-center'>
+                      <div className='spinner-grow text-primary' role='status'>
+                        <span className='sr-only'>Loading...</span>
+                      </div>
+                      <div
+                        className='spinner-grow text-secondary'
+                        role='status'
+                      >
+                        <span className='sr-only'>Loading...</span>
+                      </div>
+                      <div className='spinner-grow text-success' role='status'>
+                        <span className='sr-only'>Loading...</span>
+                      </div>
+                      <div className='spinner-grow text-danger' role='status'>
+                        <span className='sr-only'>Loading...</span>
+                      </div>
+                      <div className='spinner-grow text-warning' role='status'>
+                        <span className='sr-only'>Loading...</span>
+                      </div>
+                      <div className='spinner-grow text-info' role='status'>
+                        <span className='sr-only'>Loading...</span>
+                      </div>
+                      <div className='spinner-grow text-dark' role='status'>
+                        <span className='sr-only'>Loading...</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -110,9 +136,21 @@ const Home = () => {
                 </div>
                 <div className='card-body'>
                   <h2 className='card-title font-weight-bold'>Boris Johnson</h2>
+                  <h5 className='card-text'>Who is Boris Johnson?</h5>
                   <p className='card-text'>
-                    This is a wider card with supporting text below as a natural
+                    Since 2019, Boris Johnson has served as Prime Minister of
+                    the United Kingdom of Great Britain and Northern Ireland.
+                    Previously Foreign Secretary (2016-2018), and London Mayor
+                    (2008-2016).
                   </p>
+                  <a
+                    href='https://www.politics.co.uk/reference/johnson-boris/'
+                    className='card bg-light border-1 border-primary text-primary p-1 mb-0 text-center text-decoration-none'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    more about Boris Johnson
+                  </a>
                 </div>
                 <div className='card-footer'>
                   <div className='mt-3'>
@@ -157,9 +195,20 @@ const Home = () => {
                 </div>
                 <div className='card-body'>
                   <h2 className='card-title font-weight-bold'>Keir Starmer</h2>
+                  <h5 className='card-text'>Who is Keir Starmer?</h5>
                   <p className='card-text'>
-                    This is a wider card with supporting text below as a natural
+                    Named after the founder and first leader of the Labour Party
+                    (Keir Hardie), Sir Keir Starmer is now himself Labour party
+                    leader and, in turn, Leader of Her Majesty’s Opposition.
                   </p>
+                  <a
+                    href='https://www.politics.co.uk/reference/keir-starmer/'
+                    className='card bg-light border-1 border-danger text-danger p-1 mb-0 text-center text-decoration-none'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    more about Keir Starmer
+                  </a>
                 </div>
                 <div className='card-footer'>
                   <div className='mt-3'>

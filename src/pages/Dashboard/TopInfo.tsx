@@ -10,6 +10,10 @@ const TopInfo = () => {
       <div className='mb-1'>
         <span className='opacity-6 mr-1'>Your address:</span>
         <span data-testid='accountAddress'> {address}</span>
+        <p className='text-center'>Account Name: </p>
+        <span className='text-danger' data-testid='contractAddress'>
+          {address}
+        </span>
       </div>
       <div className='mb-4'>
         <span className='opacity-6 mr-1'>Contract address:</span>

@@ -40,13 +40,14 @@ const Navbar = () => {
             <NavItem>
               <div className='bg-light shadow border-1'>
                 <div className='card d-flex flex-row bd-highlight bg-light border-1'>
-                  <div className='py-2 px-4 bd-highlight mt-1 text-truncate'>
+                  <div className='py-2 px-4 bd-highlight mt-1'>
                     <a
                       className='opacity-7 text-muted'
                       href={`${network.explorerAddress}/address/${address}`}
                       {...{
                         target: '_blank'
                       }}
+                      rel='noopener noreferrer'
                       title='View in Explorer'
                     >
                       <DappUI.Trim
