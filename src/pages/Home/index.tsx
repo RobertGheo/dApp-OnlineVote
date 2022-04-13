@@ -79,7 +79,7 @@ const Home = () => {
                       </div>
                     </div>
                     <h4 className='text-center text-secondary'>
-                      Autonomus Counting&nbsp;
+                      Autonomus Counting:&nbsp;
                     </h4>
                     <div className='d-flex justify-content-center'>
                       <div className='spinner-grow text-primary' role='status'>

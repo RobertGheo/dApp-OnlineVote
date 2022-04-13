@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  DappUI,
-  //getIsLoggedIn,
-  logout,
-  useGetAccountInfo,
-  useGetNetworkConfig
-} from '@elrondnetwork/dapp-core';
+import { logout, useGetAccountInfo } from '@elrondnetwork/dapp-core';
 import { Navbar as BsNavbar, NavItem, Nav } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import { dAppName } from 'config';
@@ -14,7 +8,6 @@ import { ReactComponent as ElrondLogo } from './../../../assets/img/elrond.svg';
 
 const Navbar = () => {
   const { address } = useGetAccountInfo();
-  const { network } = useGetNetworkConfig();
   const handleLogout = () => {
     logout(`${window.location.origin}${routeNames.home}`);
   };
@@ -40,22 +33,6 @@ const Navbar = () => {
             <NavItem>
               <div className='bg-light shadow border-1'>
                 <div className='card d-flex flex-row bd-highlight bg-light border-1'>
-                  <div className='py-2 px-4 bd-highlight mt-1'>
-                    <a
-                      className='opacity-7 text-muted'
-                      href={`${network.explorerAddress}/address/${address}`}
-                      {...{
-                        target: '_blank'
-                      }}
-                      rel='noopener noreferrer'
-                      title='View in Explorer'
-                    >
-                      <DappUI.Trim
-                        data-testid='accountAddress'
-                        text={address}
-                      />
-                    </a>
-                  </div>
                   <div className='p-0 bd-highlight'>
                     <button
                       className='btn btn-outline-info btn-lg '

@@ -12,7 +12,8 @@ const Footer = () => {
           className='d-flex align-items-center'
           href='https://elrond.com/'
         >
-          Built with <HeartIcon className='mx-2' /> on the Elrond Network.
+          &copy; 2022 Built with <HeartIcon className='mx-2' /> on the Elrond
+          Network.
         </a>
       </div>
     </footer>
