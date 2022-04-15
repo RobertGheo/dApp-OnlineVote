@@ -6,7 +6,9 @@ import {
   transactionServices,
   refreshAccount
 } from '@elrondnetwork/dapp-core';
+import { Form, Modal } from 'react-bootstrap';
 import { contractAddress } from 'config';
+import { clear } from 'console';
 
 const RegisterInfo = () => {
   const { address, account } = useGetAccountInfo();
@@ -41,15 +43,30 @@ const RegisterInfo = () => {
       setTransactionSessionId(sessionId);
     }
   };
+  const [idNational, setIdNational] = React.useState(null ? '' : String);
+  const [faddress, setAddress] = React.useState('');
+  const [error, setError] = React.useState('');
+  const [success, setSuccess] = React.useState(false);
 
-  function registerID() {
-    const input = document.getElementById('inputID');
-    alert(input);
+  //React.useEffect(() => {
+  //  setIdNational(idNational === null ? '' : idNational);
+  //}, [idNational]);
+  function twoInOne() {
+    setIdNational(() => '');
+    setSuccess(false);
   }
+
+  function handleIDChange(e: React.ChangeEvent<any>) {
+    setIdNational(e.target.value);
+  }
+
+  // function handleSubmit(e: React.ChangeEvent<any>) {
+  //   const accId = account.balance;
+  // }
 
   return (
     <div className='container-fluid p-1'>
-      {!isRegistered && (
+      {isRegistered && (
         <div className='text-dark bg-light p-4 m-2 my-3 border rounded border-info border-1'>
           <div className='mb-3'>
             <h1 className='text-center'>Register to Vote</h1>
@@ -57,30 +74,42 @@ const RegisterInfo = () => {
           <div className='my-4'>
             <form className='form-inline justify-content-center'>
               <div className='form-group mb-2'>
-                <input
-                  type='text'
-                  autoComplete='off'
-                  maxLength={9}
-                  minLength={9}
-                  className='form-control'
-                  id='inputID'
-                  placeholder='National ID'
-                ></input>
-                <button
-                  className='btn btn-outline-success '
-                  type='submit'
-                  onClick={registerID}
-                >
-                  Register
-                </button>
+                <Form.Group onChange={handleIDChange}>
+                  <input
+                    type='text'
+                    autoComplete='off'
+                    maxLength={9}
+                    minLength={9}
+                    className='form-control'
+                    placeholder='National ID'
+                    id='inputID'
+                    value={idNational}
+                  ></input>
+                  <button
+                    type='button'
+                    className='btn btn-success'
+                    onClick={() => setSuccess(true)}
+                  >
+                    Register
+                  </button>
+                  {success && (
+                    <Modal show={true}>
+                      <Modal.Header>{idNational}</Modal.Header>
+                      <Modal.Body>Your ID has been registered</Modal.Body>
+                      <Modal.Footer>
+                        <button onClick={twoInOne}>Close</button>
+                      </Modal.Footer>
+                    </Modal>
+                  )}
+                </Form.Group>
               </div>
             </form>
             <span className='text-center d-flex justify-content-center '>
               ID example format: AA000000A
             </span>
           </div>
-          <div className='p-2 m-1 bg-light '>
-            <span className='opacity-7'>Your address:&nbsp;</span>
+          <div className='p-2 m-1 bg-light border border-info border-1'>
+            <span className='h5'>Your address:&nbsp;</span>
             <span data-testid='accountAddress'>
               <a
                 className='text-dark'
@@ -100,7 +129,7 @@ const RegisterInfo = () => {
       {!isRegistered && (
         <div className='text-white bg-success p-4 m-2 my-3 rounded border-1'>
           <h1 className='text-center pb-4'>
-            Already Voted for U.K. 2024 General Election
+            Already Voted for U.K. General Election 2024
           </h1>
           <div className='my-4'>
             <span className='h4'>Your address:</span>
@@ -119,14 +148,18 @@ const RegisterInfo = () => {
             </span>
           </div>
           <div className='mb-2'>
-            <span className='h6'>Your National ID:&nbsp;</span>
-            <span data-testid=''>AA000000A</span>
+            <span className='h5'>Your National ID:&nbsp;</span>
+            <span className='h5 font-weight-bold' data-testid=''>
+              AA000000A
+            </span>
           </div>
         </div>
       )}
-      {isRegistered && (
+      {!isRegistered && (
         <div className='text-dark bg-warning p-4 m-2 my-3 rounded border-1'>
-          <h1 className='text-center pb-4'>You registered but did not vote!</h1>
+          <h1 className='text-center pb-4'>
+            You registered but you did not vote!
+          </h1>
           <div className='my-4'>
             <span className='h4'>Your address:</span>
             <span data-testid='accountAddress'>
@@ -144,8 +177,10 @@ const RegisterInfo = () => {
             </span>
           </div>
           <div className='mb-2 text-dark'>
-            <span className='h6'>Your National ID:&nbsp;</span>
-            <span data-testid=''>AA000000A</span>
+            <span className='h5'>Your National ID:&nbsp;</span>
+            <span className='h5 font-weight-bold' data-testid=''>
+              AA000000A
+            </span>
           </div>
         </div>
       )}

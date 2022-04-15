@@ -238,10 +238,10 @@ const Home = () => {
         </li>
         <li className='list-group-item'>
           <div className='d-flex justify-content-center px-4 py-4'>
-            <div className='card row w-25  mx-auto'>
+            <div className='card row w-25 border-primary mx-auto'>
               <Link
                 to={routeNames.unlock}
-                className='btn btn-primary m-3 text-white'
+                className='btn btn-primary m-2 text-white'
                 data-testid='loginBtn'
               >
                 Login

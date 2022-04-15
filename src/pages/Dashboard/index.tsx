@@ -3,7 +3,7 @@ import * as React from 'react';
 import StatutsVote from './CheckVote';
 import RegisterInfo from './Register';
 //import TopInfo from './TopInfo';
-import Transactions from './Transactions';
+//import Transactions from './Transactions';
 
 const Dashboard = () => {
   return (
@@ -15,9 +15,8 @@ const Dashboard = () => {
               <RegisterInfo />
             </div>
           </div>
-          <div className='card-body flex-column p-4'>
+          <div className='card-body d-felx flex-column p-4'>
             <StatutsVote />
-            <Transactions />
           </div>
         </div>
       </div>

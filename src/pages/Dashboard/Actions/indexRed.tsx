@@ -18,7 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import { contractAddress } from 'config';
 
-const Actions = () => {
+const ActionsRed = () => {
   const account = useGetAccountInfo();
   const { hasPendingTransactions } = useGetPendingTransactions();
   const { network } = useGetNetworkConfig();
@@ -139,17 +139,18 @@ const Actions = () => {
     .format('mm:ss');
 
   return (
-    <div className='d-flex mt-4 justify-content-center'>
+    <div className='d-flex justify-content-center'>
       {hasPing !== undefined && (
         <>
           {hasPing && !hasPendingTransactions ? (
-            <div className='action-btn' onClick={sendPingTransaction}>
-              <button className='btn'>
-                <FontAwesomeIcon icon={faArrowUp} className='text-primary' />
+            <div
+              className='card row w-50 border-danger shadow mx-auto'
+              onClick={sendPingTransaction}
+            >
+              <button type='button' className='btn btn-danger m-2'>
+                Vote
               </button>
-              <a href='/' className='text-white text-decoration-none'>
-                Ping
-              </a>
+              <a href='/' className='text-dark'></a>
             </div>
           ) : (
             <>
@@ -190,4 +191,4 @@ const Actions = () => {
   );
 };
 
-export default Actions;
+export default ActionsRed;
