@@ -6,8 +6,9 @@ import {
   transactionServices,
   refreshAccount
 } from '@elrondnetwork/dapp-core';
-import { Form, Modal } from 'react-bootstrap';
+import { Alert, Form, Modal } from 'react-bootstrap';
 import { contractAddress } from 'config';
+//import { SmartContractResults, SmartContractAbi, TokenIdentifierValue, AddressValue } from '@elrondnetwork/erdjs/out';
 
 const RegisterInfo = () => {
   const { address, account } = useGetAccountInfo();
@@ -41,28 +42,42 @@ const RegisterInfo = () => {
       setTransactionSessionId(sessionId);
     }
   };
+
+  //-- Registered button functionality part
   const [idNational, setIdNational] = React.useState(null ? '' : String);
+  const [isBtnDisabled, setIsBtnDisabled] = React.useState(true);
   let stateIdRegister = false;
   const [faddress, setAddress] = React.useState('');
   const [error, setError] = React.useState('');
   const [success, setSuccess] = React.useState(false);
 
-  //React.useEffect(() => {
-  //  setIdNational(idNational === null ? '' : idNational);
-  //}, [idNational]);
+  React.useEffect(() => {
+    if (idNational.length < 9) {
+      setIsBtnDisabled(true);
+    } else {
+      setIsBtnDisabled(false);
+    }
+  }, [idNational]);
+
   function twoInOne() {
     setIdNational(() => '');
     setSuccess(false);
     stateIdRegister = true;
   }
+  function sendTok() {
+    setSuccess(true);
+  }
 
   function handleIDChange(e: React.ChangeEvent<any>) {
     setIdNational(e.target.value);
   }
-
+  //---//
   // function handleSubmit(e: React.ChangeEvent<any>) {
   //   const accId = account.balance;
   // }
+
+  //const fs = require('fs');
+  //const core = require('@elrondnetwork/elrond-core-js');
 
   return (
     <div className='container-fluid p-1'>
@@ -86,9 +101,10 @@ const RegisterInfo = () => {
                     value={idNational}
                   ></input>
                   <button
+                    disabled={isBtnDisabled}
                     type='button'
                     className='btn btn-success'
-                    onClick={() => setSuccess(true)}
+                    onClick={sendTok}
                   >
                     Register
                   </button>
@@ -131,13 +147,16 @@ const RegisterInfo = () => {
                 rel='noopener noreferrer'
                 title='View in Explorer'
               >
-                <DappUI.Trim data-testid='accountAddress' text={address} />
+                <DappUI.Trim
+                  data-testid='accountAddress'
+                  text={account.address}
+                />
               </a>
             </span>
           </div>
         </div>
       )}
-      {stateIdRegister && (
+      {!isRegistered && (
         <div className='text-white bg-success p-4 m-2 my-3 rounded border-1'>
           <h1 className='text-center pb-4'>
             Already Voted for U.K. General Election 2024
