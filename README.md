@@ -2,11 +2,11 @@
 
 A descentralised onlive voting system developed on the Elrond Network
 
-@elrondnetwork
+# @elrondnetwork
 
 Bulid on the elrond dapp-core template.
 
-Here can be found the dapp-core template.
+# Here can be found the dapp-core template.
 
 The __Elrond dApp Template__, built using [React.js](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/).
 It's a basic implementation of [@elrondnetwork/dapp-core](https://www.npmjs.com/package/@elrondnetwork/dapp-core), providing the basics for Elrond authentication and TX signing.
