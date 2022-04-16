@@ -8,12 +8,10 @@ import {
 } from '@elrondnetwork/dapp-core';
 import { Form, Modal } from 'react-bootstrap';
 import { contractAddress } from 'config';
-import { clear } from 'console';
 
 const RegisterInfo = () => {
   const { address, account } = useGetAccountInfo();
   const { network } = useGetNetworkConfig();
-
   const isRegistered = Boolean(address);
 
   const /*transactionSessionId*/ [, setTransactionSessionId] = React.useState<
@@ -44,6 +42,7 @@ const RegisterInfo = () => {
     }
   };
   const [idNational, setIdNational] = React.useState(null ? '' : String);
+  let stateIdRegister = false;
   const [faddress, setAddress] = React.useState('');
   const [error, setError] = React.useState('');
   const [success, setSuccess] = React.useState(false);
@@ -54,6 +53,7 @@ const RegisterInfo = () => {
   function twoInOne() {
     setIdNational(() => '');
     setSuccess(false);
+    stateIdRegister = true;
   }
 
   function handleIDChange(e: React.ChangeEvent<any>) {
@@ -66,7 +66,7 @@ const RegisterInfo = () => {
 
   return (
     <div className='container-fluid p-1'>
-      {isRegistered && (
+      {isRegistered && !stateIdRegister && (
         <div className='text-dark bg-light p-4 m-2 my-3 border rounded border-info border-1'>
           <div className='mb-3'>
             <h1 className='text-center'>Register to Vote</h1>
@@ -93,11 +93,22 @@ const RegisterInfo = () => {
                     Register
                   </button>
                   {success && (
-                    <Modal show={true}>
-                      <Modal.Header>{idNational}</Modal.Header>
-                      <Modal.Body>Your ID has been registered</Modal.Body>
+                    <Modal show={true} className='p-5'>
+                      <Modal.Header className='badge badge-warning'>
+                        <div className='h3 p-2 mx-2 mt-2 mb-0 text-center'>
+                          User Authentication
+                        </div>
+                      </Modal.Header>
+                      <Modal.Body className='h2 p-5 m-2 text-center'>
+                        Your ID has been registered:&nbsp;{idNational}
+                      </Modal.Body>
                       <Modal.Footer>
-                        <button onClick={twoInOne}>Close</button>
+                        <button
+                          className='btn-success p-2 px-3 mx-3 my-2 rounded h4'
+                          onClick={twoInOne}
+                        >
+                          Close
+                        </button>
                       </Modal.Footer>
                     </Modal>
                   )}
@@ -126,13 +137,13 @@ const RegisterInfo = () => {
           </div>
         </div>
       )}
-      {!isRegistered && (
+      {stateIdRegister && (
         <div className='text-white bg-success p-4 m-2 my-3 rounded border-1'>
           <h1 className='text-center pb-4'>
             Already Voted for U.K. General Election 2024
           </h1>
           <div className='my-4'>
-            <span className='h4'>Your address:</span>
+            <span className='h4'>Your address and ID: {setIdNational}</span>
             <span data-testid='accountAddress'>
               <a
                 className='text-white h5'
