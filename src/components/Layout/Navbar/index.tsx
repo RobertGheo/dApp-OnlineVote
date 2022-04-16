@@ -39,7 +39,7 @@ const Navbar = () => {
                       onClick={handleLogout}
                     >
                       Close
-                      <Link to={routeNames.unlock}>Login</Link>
+                      <Link to={routeNames.home}></Link>
                     </button>
                   </div>
                 </div>
