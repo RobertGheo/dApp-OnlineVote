@@ -2,8 +2,8 @@ import * as React from 'react';
 //import Actions from './Actions';
 import StatutsVote from './CheckVote';
 import RegisterInfo from './Register';
-//import TopInfo from './TopInfo';
-//import Transactions from './Transactions';
+import TopInfo from './TopInfo';
+import Transactions from './Transactions';
 
 const Dashboard = () => {
   return (
@@ -17,6 +17,10 @@ const Dashboard = () => {
           </div>
           <div className='card-body d-felx flex-column p-4'>
             <StatutsVote />
+            <div className='card'>
+              <TopInfo />
+              <Transactions />
+            </div>
           </div>
         </div>
       </div>

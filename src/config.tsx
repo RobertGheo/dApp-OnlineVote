@@ -1,13 +1,13 @@
 import * as Dapp from '@elrondnetwork/dapp-core';
 
 export const contractAddress =
-  'erd1qqqqqqqqqqqqqpgq30tjqfgxj7yr0yzs747ss8py75e3hnfhxl2s92sn7y';
+  'erd1qqqqqqqqqqqqqpgqstk00828wnft7va8fakpmzxl3h6pcxamxl2su4lu7m';
 
 export const contractAddress1 =
-  'erd1qqqqqqqqqqqqqpgquvt728n40ssd8n2qns9jrlqpwq2jc4rj4cysfuj3ad';
+  'erd1qqqqqqqqqqqqqpgqstk00828wnft7va8fakpmzxl3h6pcxamxl2su4lu7m';
 
 export const contractAddress2 =
-  'erd1qqqqqqqqqqqqqpgquvt728n40ssd8n2qns9jrlqpwq2jc4rj4cysfuj3ad';
+  'erd1qqqqqqqqqqqqqpgqstk00828wnft7va8fakpmzxl3h6pcxamxl2su4lu7m';
 
 export const dAppName = 'TSI - Online Voting Dapp';
 
