@@ -161,11 +161,8 @@ const ActionsRed = () => {
                     ...(pongAllowed ? { onClick: sendPongTransaction } : {})
                   }}
                 >
-                  <button className={`btn ${notAllowedClass}`}>
-                    <FontAwesomeIcon
-                      icon={faArrowDown}
-                      className='text-primary'
-                    />
+                  <button className={`btn btn-danger m-2 ${notAllowedClass}`}>
+                    Done
                   </button>
                   <span className='text-white'>
                     {pongAllowed ? (
