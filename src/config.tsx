@@ -4,7 +4,7 @@ export const contractAddress =
   'erd1qqqqqqqqqqqqqpgqstk00828wnft7va8fakpmzxl3h6pcxamxl2su4lu7m';
 
 export const contractAddress1 =
-  'erd1qqqqqqqqqqqqqpgqstk00828wnft7va8fakpmzxl3h6pcxamxl2su4lu7m';
+  'erd1qqqqqqqqqqqqqpgqh55slme6hzw5lw33dp53lu4wmnj6e7cxxl2s8efyra';
 
 export const contractAddress2 =
   'erd1qqqqqqqqqqqqqpgqstk00828wnft7va8fakpmzxl3h6pcxamxl2su4lu7m';

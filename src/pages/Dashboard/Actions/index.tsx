@@ -13,13 +13,12 @@ import {
   ProxyProvider,
   Query
 } from '@elrondnetwork/erdjs';
-//import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
-import { Modal } from 'react-bootstrap';
 import { contractAddress } from 'config';
 
-const ActionsBlue = () => {
+const Actions = () => {
   const account = useGetAccountInfo();
   const { hasPendingTransactions } = useGetPendingTransactions();
   const { network } = useGetNetworkConfig();
@@ -139,60 +138,49 @@ const ActionsBlue = () => {
     .seconds(secondsLeft || 0)
     .format('mm:ss');
 
-  const [success, setSuccess] = React.useState(false);
-
-  function closeVoteStatus() {
-    setSuccess(false);
-  }
-  function voteStatus() {
-    setSuccess(true);
-  }
-
   return (
-    <div className='d-flex col justify-content-center'>
+    <div className='d-flex mt-4 justify-content-center'>
       {hasPing !== undefined && (
         <>
           {hasPing && !hasPendingTransactions ? (
-            <div
-              className='card row w-100 border-primary shadow mx-auto'
-              onClick={sendPingTransaction}
-            >
-              <button type='button' className='btn btn-primary m-2'>
-                Vote
+            <div className='action-btn' onClick={sendPingTransaction}>
+              <button className='btn'>
+                <FontAwesomeIcon icon={faArrowUp} className='text-primary' />
               </button>
-              <a href='/' className='text-dark'></a>
+              <a href='/' className='text-white text-decoration-none'>
+                Ping
+              </a>
             </div>
           ) : (
             <>
-              <div className='d-flex col justify-content-center not-allowed disabled'>
-                <div className='card row w-100 border-primary shadow mx-auto not-allowed disabled'>
-                  <button
-                    className='btn btn-primary m-2 disabled'
-                    onClick={voteStatus}
-                  >
-                    Voted
+              <div className='d-flex flex-column'>
+                <div
+                  {...{
+                    className: `action-btn ${notAllowedClass}`,
+                    ...(pongAllowed ? { onClick: sendPongTransaction } : {})
+                  }}
+                >
+                  <button className={`btn ${notAllowedClass}`}>
+                    <FontAwesomeIcon
+                      icon={faArrowDown}
+                      className='text-primary'
+                    />
                   </button>
-                  {success && (
-                    <Modal show={true} className='p-5'>
-                      <Modal.Header className='badge badge-primary'>
-                        <div className='h3 p-2 mx-2 mt-2 mb-0 text-center'>
-                          Conservative Party Votes Ballot Box.
-                        </div>
-                      </Modal.Header>
-                      <Modal.Body className='h2 p-5 m-2 text-center'>
-                        Your vote has successfully been recorded.
-                      </Modal.Body>
-                      <Modal.Footer>
-                        <button
-                          className='btn-success p-2 px-3 mx-3 my-2 rounded h4'
-                          onClick={closeVoteStatus}
-                        >
-                          Close
-                        </button>
-                      </Modal.Footer>
-                    </Modal>
-                  )}
+                  <span className='text-white'>
+                    {pongAllowed ? (
+                      <a href='/' className='text-white text-decoration-none'>
+                        Pong
+                      </a>
+                    ) : (
+                      <>Pong</>
+                    )}
+                  </span>
                 </div>
+                {!pongAllowed && !hasPendingTransactions && (
+                  <span className='opacity-6 text-white'>
+                    {timeRemaining} until able to Pong
+                  </span>
+                )}
               </div>
             </>
           )}
@@ -202,4 +190,4 @@ const ActionsBlue = () => {
   );
 };
 
-export default ActionsBlue;
+export default Actions;

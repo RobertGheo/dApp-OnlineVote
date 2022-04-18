@@ -13,10 +13,8 @@ import {
   ProxyProvider,
   Query
 } from '@elrondnetwork/erdjs';
-import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import moment from 'moment';
-import { contractAddress } from 'config';
+import { Modal } from 'react-bootstrap';
+import { contractAddress1 } from 'config';
 
 const ActionsRed = () => {
   const account = useGetAccountInfo();
@@ -30,30 +28,9 @@ const ActionsRed = () => {
       string | null
     >(null);
 
-  const mount = () => {
-    if (secondsLeft) {
-      const interval = setInterval(() => {
-        setSecondsLeft((existing) => {
-          if (existing) {
-            return existing - 1;
-          } else {
-            clearInterval(interval);
-            return 0;
-          }
-        });
-      }, 1000);
-      return () => {
-        clearInterval(interval);
-      };
-    }
-  };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  React.useEffect(mount, [hasPing]);
-
   React.useEffect(() => {
     const query = new Query({
-      address: new Address(contractAddress),
+      address: new Address(contractAddress1),
       func: new ContractFunction('getTimeToPong'),
       args: [new AddressValue(new Address(address))]
     });
@@ -90,7 +67,7 @@ const ActionsRed = () => {
     const pingTransaction = {
       value: '1000000000000000000',
       data: 'ping',
-      receiver: contractAddress
+      receiver: contractAddress1
     };
     await refreshAccount();
 
@@ -108,43 +85,23 @@ const ActionsRed = () => {
     }
   };
 
-  const sendPongTransaction = async () => {
-    const pongTransaction = {
-      value: '0',
-      data: 'pong',
-      receiver: contractAddress
-    };
-    await refreshAccount();
+  const [success, setSuccess] = React.useState(false);
 
-    const { sessionId /*, error*/ } = await sendTransactions({
-      transactions: pongTransaction,
-      transactionsDisplayInfo: {
-        processingMessage: 'Processing Pong transaction',
-        errorMessage: 'An error has occured during Pong',
-        successMessage: 'Pong transaction successful'
-      },
-      redirectAfterSign: false
-    });
-    if (sessionId != null) {
-      setTransactionSessionId(sessionId);
-    }
-  };
-
-  const pongAllowed = secondsLeft === 0 && !hasPendingTransactions;
-  const notAllowedClass = pongAllowed ? '' : 'not-allowed disabled';
-
-  const timeRemaining = moment()
-    .startOf('day')
-    .seconds(secondsLeft || 0)
-    .format('mm:ss');
+  function closeVoteStatus() {
+    setSuccess(false);
+  }
+  function voteStatus() {
+    setSuccess(true);
+  }
+  const notAllowedClass = success == false;
 
   return (
-    <div className='d-flex justify-content-center'>
+    <div className='d-flex col justify-content-center not-allowed disabled'>
       {hasPing !== undefined && (
         <>
           {hasPing && !hasPendingTransactions ? (
             <div
-              className='card row w-50 border-danger shadow mx-auto'
+              className='card row w-100 border-danger shadow mx-auto'
               onClick={sendPingTransaction}
             >
               <button type='button' className='btn btn-danger m-2'>
@@ -154,31 +111,35 @@ const ActionsRed = () => {
             </div>
           ) : (
             <>
-              <div className='d-flex flex-column'>
-                <div
-                  {...{
-                    className: `action-btn ${notAllowedClass}`,
-                    ...(pongAllowed ? { onClick: sendPongTransaction } : {})
-                  }}
-                >
-                  <button className={`btn btn-danger m-2 ${notAllowedClass}`}>
-                    Done
+              <div className='d-flex col justify-content-center not-allowed disabled'>
+                <div className='card row w-100 border-danger shadow mx-auto not-allowed disabled'>
+                  <button
+                    className={`btn btn-danger m-2  not-allowed disabled ${notAllowedClass}`}
+                    onClick={voteStatus}
+                  >
+                    Voted
                   </button>
-                  <span className='text-white'>
-                    {pongAllowed ? (
-                      <a href='/' className='text-white text-decoration-none'>
-                        Pong
-                      </a>
-                    ) : (
-                      <>Pong</>
-                    )}
-                  </span>
+                  {success && (
+                    <Modal show={true} className='p-5'>
+                      <Modal.Header className='badge badge-danger'>
+                        <div className='h3 p-2 mx-2 mt-2 mb-0 text-center'>
+                          Labour Party Ballot Box
+                        </div>
+                      </Modal.Header>
+                      <Modal.Body className='h2 p-5 m-2 text-center'>
+                        Your vote has successfully been recorded.
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <button
+                          className='btn-success p-2 px-3 mx-3 my-2 rounded h4'
+                          onClick={closeVoteStatus}
+                        >
+                          Close
+                        </button>
+                      </Modal.Footer>
+                    </Modal>
+                  )}
                 </div>
-                {!pongAllowed && !hasPendingTransactions && (
-                  <span className='opacity-6 text-white'>
-                    {timeRemaining} until able to Pong
-                  </span>
-                )}
               </div>
             </>
           )}

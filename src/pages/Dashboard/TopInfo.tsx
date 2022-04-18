@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useGetAccountInfo, DappUI } from '@elrondnetwork/dapp-core';
 import { contractAddress } from 'config';
+import Actions from './Actions/index';
+import Actions1 from './Actions/index1';
 //import { useLocation } from 'react-router-dom';
 
 const TopInfo = () => {
@@ -20,6 +22,12 @@ const TopInfo = () => {
         <h3 className='py-2'>
           <DappUI.Denominate value={account.balance} data-testid='balance' />
         </h3>
+      </div>
+      <div className='card bg-primary border-light border-1'>
+        <Actions />
+      </div>
+      <div className='card bg-danger border-light border-1'>
+        <Actions1 />
       </div>
     </div>
   );
