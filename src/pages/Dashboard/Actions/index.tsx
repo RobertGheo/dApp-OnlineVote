@@ -10,13 +10,14 @@ import {
   Address,
   AddressValue,
   ContractFunction,
+  GasLimit,
   ProxyProvider,
   Query
 } from '@elrondnetwork/erdjs';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
-import { contractAddress } from 'config';
+import { contractAddressHex } from 'config';
 
 const Actions = () => {
   const account = useGetAccountInfo();
@@ -53,7 +54,7 @@ const Actions = () => {
 
   React.useEffect(() => {
     const query = new Query({
-      address: new Address(contractAddress),
+      address: new Address(contractAddressHex),
       func: new ContractFunction('getTimeToPong'),
       args: [new AddressValue(new Address(address))]
     });
@@ -90,7 +91,8 @@ const Actions = () => {
     const pingTransaction = {
       value: '1000000000000000000',
       data: 'ping',
-      receiver: contractAddress
+      receiver: contractAddressHex,
+      GasLimit: '4000000'
     };
     await refreshAccount();
 
@@ -112,7 +114,8 @@ const Actions = () => {
     const pongTransaction = {
       value: '0',
       data: 'pong',
-      receiver: contractAddress
+      receiver: contractAddressHex,
+      gasLimit: new GasLimit(4000000)
     };
     await refreshAccount();
 

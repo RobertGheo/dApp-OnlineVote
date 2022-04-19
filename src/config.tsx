@@ -6,8 +6,11 @@ export const contractAddress =
 export const contractAddress1 =
   'erd1qqqqqqqqqqqqqpgqh55slme6hzw5lw33dp53lu4wmnj6e7cxxl2s8efyra';
 
-export const contractAddress2 =
-  'erd1qqqqqqqqqqqqqpgqstk00828wnft7va8fakpmzxl3h6pcxamxl2su4lu7m';
+export const contractAddressHex =
+  'erd1qqqqqqqqqqqqqpgqcgzn6rr02eqx2x2ah2vfjmltuzkfs4psxl2s3t0c08';
+
+export const contractAddressHex1 =
+  'erd1qqqqqqqqqqqqqpgq6e9pgmxjvwz7qx6h7uer7jqcapf3rfpyxl2shqy6ft';
 
 export const dAppName = 'TSI - Online Voting Dapp';
 

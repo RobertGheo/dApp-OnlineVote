@@ -10,6 +10,7 @@ import {
   Address,
   AddressValue,
   ContractFunction,
+  GasLimit,
   ProxyProvider,
   Query
 } from '@elrondnetwork/erdjs';
@@ -17,7 +18,7 @@ import {
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import { Modal } from 'react-bootstrap';
-import { contractAddress } from 'config';
+import { contractAddressHex } from 'config';
 
 const ActionsBlue = () => {
   const account = useGetAccountInfo();
@@ -54,7 +55,7 @@ const ActionsBlue = () => {
 
   React.useEffect(() => {
     const query = new Query({
-      address: new Address(contractAddress),
+      address: new Address(contractAddressHex),
       func: new ContractFunction('getTimeToPong'),
       args: [new AddressValue(new Address(address))]
     });
@@ -89,18 +90,19 @@ const ActionsBlue = () => {
 
   const sendPingTransaction = async () => {
     const pingTransaction = {
-      value: '1000000000000000000',
-      data: 'ping',
-      receiver: contractAddress
+      value: '0',
+      gasLimit: new GasLimit(4000000),
+      data: 'ESDTTransfer@564f5445554b323032342d353534646362@01@70696e67',
+      receiver: contractAddressHex
     };
     await refreshAccount();
 
     const { sessionId /*, error*/ } = await sendTransactions({
       transactions: pingTransaction,
       transactionsDisplayInfo: {
-        processingMessage: 'Processing Ping transaction',
-        errorMessage: 'An error has occured during Ping',
-        successMessage: 'Ping transaction successful'
+        processingMessage: 'Processing Vote transaction',
+        errorMessage: 'An error has occured during Vote',
+        successMessage: 'Vote transaction successful'
       },
       redirectAfterSign: false
     });
@@ -113,7 +115,8 @@ const ActionsBlue = () => {
     const pongTransaction = {
       value: '0',
       data: 'pong',
-      receiver: contractAddress
+      receiver: contractAddressHex,
+      GasLimit: '4000000'
     };
     await refreshAccount();
 

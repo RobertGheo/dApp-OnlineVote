@@ -10,11 +10,12 @@ import {
   Address,
   AddressValue,
   ContractFunction,
+  GasLimit,
   ProxyProvider,
   Query
 } from '@elrondnetwork/erdjs';
 import { Modal } from 'react-bootstrap';
-import { contractAddress1 } from 'config';
+import { contractAddressHex1 } from 'config';
 
 const ActionsRed = () => {
   const account = useGetAccountInfo();
@@ -30,7 +31,7 @@ const ActionsRed = () => {
 
   React.useEffect(() => {
     const query = new Query({
-      address: new Address(contractAddress1),
+      address: new Address(contractAddressHex1),
       func: new ContractFunction('getTimeToPong'),
       args: [new AddressValue(new Address(address))]
     });
@@ -65,18 +66,19 @@ const ActionsRed = () => {
 
   const sendPingTransaction = async () => {
     const pingTransaction = {
-      value: '1000000000000000000',
-      data: 'ping',
-      receiver: contractAddress1
+      value: '0',
+      gasLimit: new GasLimit(4000000),
+      data: 'ESDTTransfer@564f5445554b323032342d353534646362@01@70696e67',
+      receiver: contractAddressHex1
     };
-    await refreshAccount();
 
+    await refreshAccount();
     const { sessionId /*, error*/ } = await sendTransactions({
       transactions: pingTransaction,
       transactionsDisplayInfo: {
-        processingMessage: 'Processing Ping transaction',
-        errorMessage: 'An error has occured during Ping',
-        successMessage: 'Ping transaction successful'
+        processingMessage: 'Processing Vote transaction',
+        errorMessage: 'An error has occured during Vote',
+        successMessage: 'Vote transaction successful'
       },
       redirectAfterSign: false
     });

@@ -5,7 +5,7 @@ import {
   useGetNetworkConfig
 } from '@elrondnetwork/dapp-core';
 import { Link } from 'react-router-dom';
-import { contractAddress1, contractAddress2, dAppName } from 'config';
+import { contractAddress, contractAddress1, dAppName } from 'config';
 import { routeNames } from 'routes';
 
 const Home = () => {
@@ -160,7 +160,7 @@ const Home = () => {
                     <span className='opacity-6 mr-1'>
                       <a
                         className='text-primary'
-                        href={`${network.explorerAddress}/address/${contractAddress1}`}
+                        href={`${network.explorerAddress}/address/${contractAddress}`}
                         {...{
                           target: '_blank'
                         }}
@@ -168,7 +168,7 @@ const Home = () => {
                       >
                         <DappUI.Trim
                           data-testid='contractAddress1'
-                          text={contractAddress1}
+                          text={contractAddress}
                         />
                       </a>
                     </span>
@@ -218,7 +218,7 @@ const Home = () => {
                     <span className='opacity-6 mr-1'>
                       <a
                         className='text-danger'
-                        href={`${network.explorerAddress}/address/${contractAddress2}`}
+                        href={`${network.explorerAddress}/address/${contractAddress1}`}
                         {...{
                           target: '_blank'
                         }}
@@ -226,7 +226,7 @@ const Home = () => {
                       >
                         <DappUI.Trim
                           data-testid='contractAddress2'
-                          text={contractAddress2}
+                          text={contractAddress1}
                         />
                       </a>
                     </span>
