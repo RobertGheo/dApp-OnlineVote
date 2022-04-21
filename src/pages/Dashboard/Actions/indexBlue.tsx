@@ -4,7 +4,8 @@ import {
   useGetAccountInfo,
   useGetPendingTransactions,
   refreshAccount,
-  useGetNetworkConfig
+  useGetNetworkConfig,
+  logout
 } from '@elrondnetwork/dapp-core';
 import {
   Address,
@@ -18,13 +19,18 @@ import {
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import { Modal } from 'react-bootstrap';
-import { contractAddressHex } from 'config';
+import { Link } from 'react-router-dom';
+import { contractAddressHex, contractAddressHex1, contractClaim } from 'config';
+import { routeNames } from 'routes';
 
 const ActionsBlue = () => {
   const account = useGetAccountInfo();
   const { hasPendingTransactions } = useGetPendingTransactions();
   const { network } = useGetNetworkConfig();
   const { address } = account;
+  const handleLogout = () => {
+    logout(`${window.location.origin}${routeNames.votedSuccessful}`);
+  };
 
   const [secondsLeft, setSecondsLeft] = React.useState<number>();
   const [hasPing, setHasPing] = React.useState<boolean>();
@@ -51,7 +57,7 @@ const ActionsBlue = () => {
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  React.useEffect(mount, [hasPing]);
+  //React.useEffect(mount, [hasPing]);
 
   React.useEffect(() => {
     const query = new Query({
@@ -111,29 +117,6 @@ const ActionsBlue = () => {
     }
   };
 
-  const sendPongTransaction = async () => {
-    const pongTransaction = {
-      value: '0',
-      data: 'pong',
-      receiver: contractAddressHex,
-      GasLimit: '4000000'
-    };
-    await refreshAccount();
-
-    const { sessionId /*, error*/ } = await sendTransactions({
-      transactions: pongTransaction,
-      transactionsDisplayInfo: {
-        processingMessage: 'Processing Pong transaction',
-        errorMessage: 'An error has occured during Pong',
-        successMessage: 'Pong transaction successful'
-      },
-      redirectAfterSign: false
-    });
-    if (sessionId != null) {
-      setTransactionSessionId(sessionId);
-    }
-  };
-
   const pongAllowed = secondsLeft === 0 && !hasPendingTransactions;
   const notAllowedClass = pongAllowed ? '' : 'not-allowed disabled';
 
@@ -147,6 +130,7 @@ const ActionsBlue = () => {
   function closeVoteStatus() {
     setSuccess(false);
   }
+
   function voteStatus() {
     setSuccess(true);
   }
@@ -169,13 +153,10 @@ const ActionsBlue = () => {
             <>
               <div className='d-flex col justify-content-center not-allowed disabled'>
                 <div className='card row w-100 border-primary shadow mx-auto not-allowed disabled'>
-                  <button
-                    className='btn btn-primary m-2 disabled'
-                    onClick={voteStatus}
-                  >
+                  <button className='btn btn-primary not-allowed m-2 disabled'>
                     Voted
                   </button>
-                  {success && (
+                  {!hasPing && (
                     <Modal show={true} className='p-5'>
                       <Modal.Header className='badge badge-primary'>
                         <div className='h3 p-2 mx-2 mt-2 mb-0 text-center'>
@@ -186,12 +167,13 @@ const ActionsBlue = () => {
                         Your vote has successfully been recorded.
                       </Modal.Body>
                       <Modal.Footer>
-                        <button
-                          className='btn-success p-2 px-3 mx-3 my-2 rounded h4'
-                          onClick={closeVoteStatus}
+                        <Link
+                          to={routeNames.votedSuccessful}
+                          className='btn-success p-2 px-3 mx-3 my-2 rounded h3'
+                          onClick={handleLogout}
                         >
                           Close
-                        </button>
+                        </Link>
                       </Modal.Footer>
                     </Modal>
                   )}

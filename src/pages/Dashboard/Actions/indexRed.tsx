@@ -4,7 +4,8 @@ import {
   useGetAccountInfo,
   useGetPendingTransactions,
   refreshAccount,
-  useGetNetworkConfig
+  useGetNetworkConfig,
+  logout
 } from '@elrondnetwork/dapp-core';
 import {
   Address,
@@ -15,13 +16,18 @@ import {
   Query
 } from '@elrondnetwork/erdjs';
 import { Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { contractAddressHex1 } from 'config';
+import { routeNames } from 'routes';
 
 const ActionsRed = () => {
   const account = useGetAccountInfo();
   const { hasPendingTransactions } = useGetPendingTransactions();
   const { network } = useGetNetworkConfig();
   const { address } = account;
+  const handleLogout = () => {
+    logout(`${window.location.origin}${routeNames.votedSuccessful}`);
+  };
 
   const [secondsLeft, setSecondsLeft] = React.useState<number>();
   const [hasPing, setHasPing] = React.useState<boolean>();
@@ -87,41 +93,30 @@ const ActionsRed = () => {
     }
   };
 
-  const [success, setSuccess] = React.useState(false);
-
-  function closeVoteStatus() {
-    setSuccess(false);
-  }
-  function voteStatus() {
-    setSuccess(true);
-  }
-  const notAllowedClass = success == false;
-
   return (
     <div className='d-flex col justify-content-center not-allowed disabled'>
       {hasPing !== undefined && (
         <>
           {hasPing && !hasPendingTransactions ? (
-            <div
-              className='card row w-100 border-danger shadow mx-auto'
-              onClick={sendPingTransaction}
-            >
-              <button type='button' className='btn btn-danger m-2'>
-                Vote
-              </button>
-              <a href='/' className='text-dark'></a>
-            </div>
+            <>
+              <div
+                className='card row w-100 border-danger shadow mx-auto'
+                onClick={sendPingTransaction}
+              >
+                <button type='button' className='btn btn-danger m-2'>
+                  Vote
+                </button>
+                <a href='/' className='text-dark'></a>
+              </div>
+            </>
           ) : (
             <>
               <div className='d-flex col justify-content-center not-allowed disabled'>
                 <div className='card row w-100 border-danger shadow mx-auto not-allowed disabled'>
-                  <button
-                    className={`btn btn-danger m-2  not-allowed disabled ${notAllowedClass}`}
-                    onClick={voteStatus}
-                  >
+                  <button className='btn btn-danger m-2  not-allowed disabled'>
                     Voted
                   </button>
-                  {success && (
+                  {!hasPing && (
                     <Modal show={true} className='p-5'>
                       <Modal.Header className='badge badge-danger'>
                         <div className='h3 p-2 mx-2 mt-2 mb-0 text-center'>
@@ -132,12 +127,13 @@ const ActionsRed = () => {
                         Your vote has successfully been recorded.
                       </Modal.Body>
                       <Modal.Footer>
-                        <button
-                          className='btn-success p-2 px-3 mx-3 my-2 rounded h4'
-                          onClick={closeVoteStatus}
+                        <Link
+                          to={routeNames.votedSuccessful}
+                          className='btn-success p-2 px-3 mx-3 my-2 rounded h3'
+                          onClick={handleLogout}
                         >
                           Close
-                        </button>
+                        </Link>
                       </Modal.Footer>
                     </Modal>
                   )}

@@ -1,7 +1,9 @@
 import { dAppName } from 'config';
+import VoteDone from 'pages/AlreadyVote';
 import withPageTitle from './components/PageTitle';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
+import RegisterInfo from './pages/RegisterID';
 import Transaction from './pages/Transaction';
 import UnlockRoute from './pages/UnlockPage';
 
@@ -11,7 +13,9 @@ export const routeNames = {
   transaction: '/transaction',
   unlock: '/unlock',
   ledger: '/ledger',
-  walletconnect: '/walletconnect'
+  walletconnect: '/walletconnect',
+  registerId: '/registerid',
+  votedSuccessful: '/voted-successful'
 };
 
 const routes: Array<any> = [
@@ -35,6 +39,16 @@ const routes: Array<any> = [
     path: routeNames.transaction,
     title: 'Transaction',
     component: Transaction
+  },
+  {
+    path: routeNames.registerId,
+    title: 'RegisterID',
+    component: RegisterInfo
+  },
+  {
+    path: routeNames.votedSuccessful,
+    title: 'Voted Successful',
+    component: VoteDone
   }
 ];
 

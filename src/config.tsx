@@ -12,6 +12,9 @@ export const contractAddressHex =
 export const contractAddressHex1 =
   'erd1qqqqqqqqqqqqqpgq6e9pgmxjvwz7qx6h7uer7jqcapf3rfpyxl2shqy6ft';
 
+export const contractClaim =
+  'erd1qqqqqqqqqqqqqpgqnhvw8ssrg0rlk7h3fqklx539ykk5833cxl2styhsvq';
+
 export const dAppName = 'TSI - Online Voting Dapp';
 
 export const apiAddress = 'https://devnet-api.elrond.com';

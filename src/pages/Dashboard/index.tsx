@@ -1,11 +1,13 @@
 import * as React from 'react';
 //import Actions from './Actions';
+import RegisterInfo from '../RegisterID';
 import StatutsVote from './CheckVote';
-import RegisterInfo from './Register';
 import TopInfo from './TopInfo';
 import Transactions from './Transactions';
 
 const Dashboard = () => {
+  const TokenIdentifier = '';
+
   return (
     <div className='container pt-5 mt-5'>
       <div className='col-10 col-md-10 col-lg-12 mx-auto'>
@@ -19,7 +21,6 @@ const Dashboard = () => {
             <StatutsVote />
             <div className='card'>
               <TopInfo />
-              <Transactions />
             </div>
           </div>
         </div>
