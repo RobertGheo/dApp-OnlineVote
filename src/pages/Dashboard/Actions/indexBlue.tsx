@@ -26,6 +26,7 @@ const ActionsBlue = () => {
   const { hasPendingTransactions } = useGetPendingTransactions();
   const { network } = useGetNetworkConfig();
   const { address } = account;
+
   const handleLogout = () => {
     logout(`${window.location.origin}${routeNames.votedSuccessful}`);
   };
@@ -84,20 +85,6 @@ const ActionsBlue = () => {
     }
   };
 
-  const [isBtnDisabled, setIsBtnDisabled] = React.useState(false);
-  async function showStatutVote() {
-    if (hasVoted) {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setIsBtnDisabled(true);
-    } else {
-      setIsBtnDisabled(false);
-    }
-  }
-  function disableModal() {
-    setIsBtnDisabled(false);
-  }
-  showStatutVote();
-
   return (
     <div className='d-flex col justify-content-center'>
       {!hasVoted && (
@@ -117,48 +104,46 @@ const ActionsBlue = () => {
             <button className='btn btn-primary not-allowed m-2 disabled'>
               Voted
             </button>
-            {isBtnDisabled && (
-              <Modal show={true} className='p-5'>
-                <Modal.Header className='badge badge-primary'>
-                  <div className='h3 p-2 mx-2 mt-2 mb-0 text-center'>
-                    Conservative Party Votes Ballot Box.
+            <Modal show={true} className='p-5'>
+              <Modal.Header className='badge badge-primary'>
+                <div className='h3 p-2 mx-2 mt-2 mb-0 text-center'>
+                  Conservative Party Votes Ballot Box.
+                </div>
+              </Modal.Header>
+              <Modal.Body className='h2 p-5 my-2 text-center'>
+                Your vote has successfully been recorded.
+                <div className='card pt-5 mt-4 border-0'>
+                  <div className='card p-3 text-left shadow border-primary'>
+                    <span className='h4'>Your address:</span>
+                    <span data-testid='accountAddress'>
+                      <a
+                        className='text-primary h6'
+                        href={`${network.explorerAddress}/address/${address}`}
+                        {...{
+                          target: '_blank'
+                        }}
+                        rel='noopener noreferrer'
+                        title='View in Explorer'
+                      >
+                        <DappUI.Trim
+                          data-testid='accountAddress'
+                          text={address}
+                        />
+                      </a>
+                    </span>
                   </div>
-                </Modal.Header>
-                <Modal.Body className='h2 p-5 my-2 text-center'>
-                  Your vote has successfully been recorded.
-                  <div className='card pt-5 mt-4 border-0'>
-                    <div className='card p-3 text-left shadow border-primary'>
-                      <span className='h4'>Your address:</span>
-                      <span data-testid='accountAddress'>
-                        <a
-                          className='text-primary h6'
-                          href={`${network.explorerAddress}/address/${address}`}
-                          {...{
-                            target: '_blank'
-                          }}
-                          rel='noopener noreferrer'
-                          title='View in Explorer'
-                        >
-                          <DappUI.Trim
-                            data-testid='accountAddress'
-                            text={address}
-                          />
-                        </a>
-                      </span>
-                    </div>
-                  </div>
-                </Modal.Body>
-                <Modal.Footer onClick={disableModal}>
-                  <Link
-                    to={routeNames.votedSuccessful}
-                    className='btn-success p-2 px-3 mx-3 my-2 rounded h2'
-                    onClick={handleLogout}
-                  >
-                    Close
-                  </Link>
-                </Modal.Footer>
-              </Modal>
-            )}
+                </div>
+              </Modal.Body>
+              <Modal.Footer>
+                <Link
+                  to={routeNames.votedSuccessful}
+                  className='btn-success p-2 px-3 mx-3 my-2 rounded h2'
+                  onClick={handleLogout}
+                >
+                  Close
+                </Link>
+              </Modal.Footer>
+            </Modal>
           </div>
         </div>
       )}

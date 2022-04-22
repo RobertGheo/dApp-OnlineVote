@@ -42,9 +42,9 @@ const Home = () => {
               <div className='col-10 col-md-10 col-lg-12 mx-auto'>
                 <div className='card shadow border-info bg-light  border-1'>
                   <div className='card-header bg-light border-info border-1'>
-                    <h2 className='text-center font-weight-bold mt-1'>
+                    <h1 className='text-center font-weight-bold mt-1'>
                       General Election in United Kindom - 2024
-                    </h2>
+                    </h1>
                   </div>
                   <div className='card-body p-3'>
                     <h3 className='text-center font-weight-bold'>
