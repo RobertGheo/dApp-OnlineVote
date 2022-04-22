@@ -129,6 +129,7 @@ const Dashboard = () => {
         console.error('Unable to call VM query', err);
       });
   };
+
   ballotboxTory();
   ballotboxLabour();
   verifyClaimVote();
@@ -161,9 +162,11 @@ const Dashboard = () => {
             {hasVotedTory && (
               <>
                 <Modal show={true} className='p-5'>
-                  <Modal.Header className='badge badge-primary'>
-                    <div className='h3 p-2 mx-2 mt-2 mb-0 text-center'>
-                      Conservative Party Votes Ballot Box.
+                  <Modal.Header className='badge badge-primary badge-auto '>
+                    <div className='card bg-primary p-2 mx-2 mt-2 mb-0 border-0'>
+                      <h3 className='h3 text-center'>
+                        Conservative Party Votes Ballot Box.
+                      </h3>
                     </div>
                   </Modal.Header>
                   <Modal.Body className='h2 p-5 my-2 text-center'>
@@ -205,8 +208,8 @@ const Dashboard = () => {
             {hasVotedLabour && (
               <Modal show={true} className='p-5'>
                 <Modal.Header className='badge badge-danger'>
-                  <div className='h3 p-2 mx-2 mt-2 mb-0 text-center'>
-                    Labour Party Ballot Box
+                  <div className='card bg-danger p-2 mx-2 mt-2 mb-0 border-0'>
+                    <h3 className='h3 text-center'>Labour Party Ballot Box</h3>
                   </div>
                 </Modal.Header>
                 <Modal.Body className='h2 p-5 m-2 text-center'>

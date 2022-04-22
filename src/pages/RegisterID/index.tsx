@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import * as React from 'react';
 import {
   useGetAccountInfo,
@@ -6,7 +9,22 @@ import {
   transactionServices,
   refreshAccount
 } from '@elrondnetwork/dapp-core';
-import { GasLimit } from '@elrondnetwork/erdjs/out';
+import {
+  ProxyProvider,
+  UserSigner,
+  Account,
+  Transaction,
+  Address,
+  Balance,
+  GasLimit,
+  NetworkConfig
+} from '@elrondnetwork/erdjs';
+import {
+  ApiNetworkProvider,
+  ProxyNetworkProvider
+} from '@elrondnetwork/erdjs-network-providers';
+import BigNumber from 'bignumber.js';
+import fetch from 'node-fetch';
 import { Form, Modal } from 'react-bootstrap';
 import { contractClaim } from 'config';
 
@@ -14,6 +32,38 @@ const RegisterInfo = () => {
   const { address, account } = useGetAccountInfo();
   const { network } = useGetNetworkConfig();
   const isRegistered = Boolean(address);
+
+  //Egld Claim Faucet for blockchain transaction fee
+  const PemFile = 'wallet-owner.pem';
+  const ProxyUrl = 'https://devnet-api.elrond.com';
+  const __dirname = dirname(fileURLToPath(import.meta.url));
+
+  const SendEgldFee = async () => {
+    const provider = new ProxyProvider(ProxyUrl);
+    const signer = await getSigner();
+    const accountSender = new Account(signer.getAddress());
+
+    await NetworkConfig.getDefault().sync(provider);
+    await accountSender.sync(provider);
+
+    const tx = new Transaction({
+      gasLimit: new GasLimit(500000),
+      receiver: new Address(address),
+      value: Balance.egld(0.0006)
+    });
+
+    tx.setNonce(accountSender.nonce);
+    await signer.sign(tx);
+    await tx.send(provider);
+  };
+
+  const getSigner = async () => {
+    const pemWalletPath = path.join(__dirname, '..', 'wallet', PemFile);
+    const pemWalletContents = await fs.promises.readFile(pemWalletPath, {
+      encoding: 'utf8'
+    });
+    return UserSigner.fromPem(pemWalletContents);
+  };
 
   const /*transactionSessionId*/ [, setTransactionSessionId] = React.useState<
       string | null
@@ -66,6 +116,7 @@ const RegisterInfo = () => {
   }
   function popUpMessage() {
     setSuccess(true);
+    SendEgldFee();
   }
 
   return (

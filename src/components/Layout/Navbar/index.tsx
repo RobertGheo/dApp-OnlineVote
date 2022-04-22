@@ -50,7 +50,7 @@ const Navbar = () => {
             <NavItem>
               <Link
                 to={routeNames.unlock}
-                className='btn btn-outline-primary bg-primary btn-lg m-3 text-light'
+                className='btn btn-outline-primary shadow bg-primary btn-lg m-3 text-light'
                 data-testid='loginBtn'
               >
                 Login
@@ -61,7 +61,7 @@ const Navbar = () => {
             <NavItem>
               <Link
                 to={routeNames.home}
-                className='btn btn-outline-primary btn-lg m-3'
+                className='btn btn-outline-primary shadow btn-lg m-3'
                 data-testid='loginBtn'
               >
                 Back
