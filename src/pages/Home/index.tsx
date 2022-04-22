@@ -71,7 +71,6 @@ const Home = () => {
                             </div>
                           </div>
                         </div>
-                        <div className='card-lg p-lg-5 py-4'></div>
                         <div className='card-lg col col-lg-14'>
                           <div className='card-lg col d-flex justify-content-center p-1 shadow border-danger bg-danger rounded border-1'>
                             <div className='card bg-light border border-danger border-1 p-2 m-0'>

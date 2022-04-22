@@ -159,7 +159,7 @@ const Dashboard = () => {
                 </div>
               </>
             )}
-            {hasVotedTory && (
+            {hasVotedTory && voteClaim && (
               <>
                 <Modal show={true} className='p-5'>
                   <Modal.Header className='badge badge-primary badge-auto '>
@@ -205,7 +205,7 @@ const Dashboard = () => {
                 </Modal>
               </>
             )}
-            {hasVotedLabour && (
+            {hasVotedLabour && voteClaim && (
               <Modal show={true} className='p-5'>
                 <Modal.Header className='badge badge-danger'>
                   <div className='card bg-danger p-2 mx-2 mt-2 mb-0 border-0'>
