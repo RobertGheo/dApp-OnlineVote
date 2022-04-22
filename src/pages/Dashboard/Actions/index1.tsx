@@ -17,7 +17,7 @@ import {
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
-import { contractAddressHex1 } from 'config';
+import { contractAddressHex1, contractClaim } from 'config';
 
 const Actions1 = () => {
   const account = useGetAccountInfo();
@@ -90,9 +90,9 @@ const Actions1 = () => {
   const sendPingTransaction = async () => {
     const pingTransaction = {
       value: '0',
-      data: 'ESDTTransfer@564f5445554b323032342d353534646362@01@70696e67',
-      receiver: contractAddressHex1,
-      GasLimit: '4000000'
+      data: 'ESDTTransfer@564f5445554b323032342d656363306463@02cd29c0@6465706f736974',
+      receiver: contractClaim,
+      GasLimit: new GasLimit(4000000)
     };
     await refreshAccount();
 

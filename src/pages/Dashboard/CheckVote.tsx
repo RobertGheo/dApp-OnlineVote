@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { useGetAccountInfo, DappUI } from '@elrondnetwork/dapp-core';
-import { contractAddress } from 'config';
+import { useGetAccountInfo } from '@elrondnetwork/dapp-core';
+import BallotBox1 from 'pages/Home/ballotbox1';
+import BallotBox2 from 'pages/Home/ballotbox2';
 import ActionsBlue from './Actions/indexBlue';
 import ActionsRed from './Actions/indexRed';
-import TopInfo from './TopInfo';
 
 const StatutsVote = () => {
-  const { address, account } = useGetAccountInfo();
+  const { address } = useGetAccountInfo();
 
   const isRegistered = Boolean(address);
 
@@ -14,13 +14,17 @@ const StatutsVote = () => {
     <div className='container-fluid p-1'>
       {isRegistered && (
         <div className='card-deck p-1'>
-          <div className='card p-2 pt-3 bg-light border-0'>
+          <div className='card py-2 px-2 pt-3 bg-light border-0'>
             <div className='card bg-light shadow border-primary border-1 p-2 pb-3 mb-2'>
               <h3 className='text-center mt-2 text-primary'>
                 Conservative Party Votes
               </h3>
-              <div className='card d-flex justify-content-center px-2 pt-1 m-3 bg-light border-0'>
-                <h3 className='text-center'>45544444</h3>
+              <div className='card d-flex justify-content-center px-2 mt-2 m-lg-3 bg-light border-0'>
+                <div className='card mx-2 bg-light border-primary border-1'>
+                  <h3 className='text-center pt-2 '>
+                    <BallotBox1 />
+                  </h3>
+                </div>
               </div>
               <div className='card p-3 bg-light border-0'>
                 <img
@@ -50,8 +54,12 @@ const StatutsVote = () => {
               <h3 className='text-center mt-2 text-danger'>
                 Labour Party Votes
               </h3>
-              <div className='card d-flex justify-content-center px-2 pt-1 m-3 bg-light border-0'>
-                <h3 className='text-center'>45544444</h3>
+              <div className='card d-flex justify-content-center px-2 mt-2 m-lg-3 bg-light border-0'>
+                <div className='card mx-2 bg-light border-danger border-1'>
+                  <h3 className='text-center pt-2'>
+                    <BallotBox2 />
+                  </h3>
+                </div>
               </div>
               <div className='card p-3 bg-light border-0'>
                 <img

@@ -38,20 +38,22 @@ const Transaction = () => {
       }
     />
   ) : (
-    <DappUI.PageState
-      icon={faTimes}
-      iconClass='fa-3x text-danger'
-      className='dapp-icon icon-medium'
-      title='Error sending transaction'
-      description={
-        <>
-          <p>Try again</p>
-          <a href={routeNames.dashboard} className='btn btn-primary mt-3'>
-            Back to dashboard
-          </a>
-        </>
-      }
-    />
+    <div className='text-dark'>
+      <DappUI.PageState
+        icon={faTimes}
+        iconClass='fa-3x text-danger'
+        className='dapp-icon icon-medium'
+        title='Error sending transaction'
+        description={
+          <>
+            <p>Try again</p>
+            <a href={routeNames.dashboard} className='btn btn-primary mt-3'>
+              Back to dashboard
+            </a>
+          </>
+        }
+      />
+    </div>
   );
 };
 

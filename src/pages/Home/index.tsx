@@ -1,15 +1,14 @@
 import * as React from 'react';
-import {
-  DappUI,
-  //useGetAccountInfo,
-  useGetNetworkConfig
-} from '@elrondnetwork/dapp-core';
+import { DappUI, useGetNetworkConfig } from '@elrondnetwork/dapp-core';
 import { Link } from 'react-router-dom';
-import { contractAddress, contractAddress1, dAppName } from 'config';
+import { contractAddressHex, contractAddressHex1, dAppName } from 'config';
 import { routeNames } from 'routes';
+import BallotBox1 from './ballotbox1';
+import BallotBox2 from './ballotbox2';
 
 const Home = () => {
   const { network } = useGetNetworkConfig();
+
   //const { address, account } = useGetAccountInfo();
   return (
     <div className='container pt-5 mt-5 border-light bg-light border-1'>
@@ -56,23 +55,34 @@ const Home = () => {
                     </h4>
                     <div className='col-12 col-md-10 col-lg-12 mx-auto'>
                       <div className='card-deck py-4 px-4'>
-                        <div className='card d-flex justify-content-center p-1 shadow border-primary bg-primary rounded border-1'>
-                          <div className='card bg-light border-primary border-1 p-2 m-0'>
-                            <h3 className='text-center mt-3 text-primary'>
-                              Conservative Party Votes
-                            </h3>
-                            <div className='card d-flex justify-content-center p-4 bg-light border-0'>
-                              <h3 className='text-center'>45544444</h3>
+                        <div className='card-lg col col-lg-14'>
+                          <div className='card-lg col d-flex justify-content-center p-1 shadow border-primary bg-primary rounded border-1'>
+                            <div className='card bg-light border-primary border-1 p-2 m-0'>
+                              <h3 className='text-center mt-3 text-primary'>
+                                Conservative Party Votes
+                              </h3>
+                              <div className='card d-flex justify-content-center p-4 bg-light border-0'>
+                                <h3 className='text-center'>
+                                  <>
+                                    <BallotBox1 />
+                                  </>
+                                </h3>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <div className='card d-flex justify-content-center  p-1 shadow border-danger bg-danger rounded border-1'>
-                          <div className='card bg-light border-danger border-1 p-2 m-0'>
-                            <h3 className='text-center mt-3 text-danger'>
-                              Labour Party Votes
-                            </h3>
-                            <div className='card d-flex justify-content-center p-4 bg-light border-0'>
-                              <h3 className='text-center'>45444445</h3>
+                        <div className='card-lg p-lg-5 py-4'></div>
+                        <div className='card-lg col col-lg-14'>
+                          <div className='card-lg col d-flex justify-content-center p-1 shadow border-danger bg-danger rounded border-1'>
+                            <div className='card bg-light border border-danger border-1 p-2 m-0'>
+                              <h3 className='text-center px-3 mt-3 text-danger'>
+                                Labour Party Votes
+                              </h3>
+                              <div className='card d-flex justify-content-center p-4 bg-light border-0'>
+                                <h3 className='text-center'>
+                                  <BallotBox2 />
+                                </h3>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -154,27 +164,29 @@ const Home = () => {
                 </div>
                 <div className='card-footer'>
                   <div className='mt-3'>
-                    <span className='opacity-6 mr-1'>
+                    <span className='opacity-7 mr-1'>
                       Smart Contract Address:
                     </span>
-                    <span className='opacity-6 mr-1'>
+                    <span className='opacity-7 mr-1'>
                       <a
                         className='text-primary'
-                        href={`${network.explorerAddress}/address/${contractAddress}`}
+                        href={`${network.explorerAddress}/address/${contractAddressHex}`}
                         {...{
                           target: '_blank'
                         }}
+                        rel='noopener noreferrer'
                         title='View in Explorer'
                       >
                         <DappUI.Trim
                           data-testid='contractAddress1'
-                          text={contractAddress}
+                          text={contractAddressHex}
                         />
                       </a>
                     </span>
                   </div>
                 </div>
               </div>
+              <div className='card-lg p-lg-3 py-4'></div>
               <div className='card d-flex justify-content-center shadow border-danger bg-light rounded border-1'>
                 <img
                   className='card-img-top img-fluid bg-danger p-2'
@@ -212,21 +224,22 @@ const Home = () => {
                 </div>
                 <div className='card-footer'>
                   <div className='mt-3'>
-                    <span className='opacity-6 mr-1'>
+                    <span className='opacity-7 mr-1'>
                       Smart Contract address:
                     </span>
-                    <span className='opacity-6 mr-1'>
+                    <span className='opacity-7 mr-1'>
                       <a
                         className='text-danger'
-                        href={`${network.explorerAddress}/address/${contractAddress1}`}
+                        href={`${network.explorerAddress}/address/${contractAddressHex1}`}
                         {...{
                           target: '_blank'
                         }}
+                        rel='noopener noreferrer'
                         title='View in Explorer'
                       >
                         <DappUI.Trim
                           data-testid='contractAddress2'
-                          text={contractAddress1}
+                          text={contractAddressHex1}
                         />
                       </a>
                     </span>

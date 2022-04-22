@@ -7,11 +7,8 @@ import {
   refreshAccount
 } from '@elrondnetwork/dapp-core';
 import { GasLimit } from '@elrondnetwork/erdjs/out';
-import { faClipboard, faCopy } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Form, Modal } from 'react-bootstrap';
-import { contractAddress, contractClaim } from 'config';
-//import { SmartContractResults, SmartContractAbi, TokenIdentifierValue, AddressValue } from '@elrondnetwork/erdjs/out';
+import { contractClaim } from 'config';
 
 const RegisterInfo = () => {
   const { address, account } = useGetAccountInfo();
@@ -33,22 +30,21 @@ const RegisterInfo = () => {
     const { sessionId /*, error*/ } = await sendTransactions({
       transactions: claimTransaction,
       transactionsDisplayInfo: {
-        processingMessage: 'Processing Ping transaction',
-        errorMessage: 'An error has occured during Ping',
-        successMessage: 'Ping transaction successful'
+        processingMessage: 'Processing Claim Vote transaction',
+        errorMessage: 'An error has occured during Claim',
+        successMessage: 'Claim Vote transaction successful'
       },
       redirectAfterSign: false
     });
-    sendTok();
     if (sessionId != null) {
       setTransactionSessionId(sessionId);
     }
+    twoInOneCall();
   };
 
   //-- Registered button functionality part
   const [idNational, setIdNational] = React.useState(null ? '' : String); //set Id input state
   const [isBtnDisabled, setIsBtnDisabled] = React.useState(true);
-  const [stateIdRegister, setStateIdRegister] = React.useState('');
   const [success, setSuccess] = React.useState(false);
 
   React.useEffect(() => {
@@ -59,25 +55,22 @@ const RegisterInfo = () => {
     }
   }, [idNational]);
 
-  async function twoInOne() {
-    await new Promise((resolve) => setTimeout(resolve, 20000));
-    setIdNational(() => '');
-    setSuccess(false);
-    setStateIdRegister('2');
-  }
-  async function sendTok() {
-    await new Promise((resolve) => setTimeout(resolve, 20000));
-    setSuccess(true);
-    setStateIdRegister('1');
-  }
-
   function handleIDChange(e: React.ChangeEvent<any>) {
     setIdNational(e.target.value);
   }
 
+  function twoInOneCall() {
+    //await new Promise((resolve) => setTimeout(resolve, 3000));
+    setIdNational(() => '');
+    setSuccess(false);
+  }
+  function popUpMessage() {
+    setSuccess(true);
+  }
+
   return (
     <div className='container-fluid p-1'>
-      {isRegistered && !stateIdRegister && (
+      {isRegistered && (
         <div className='card bg-light m-3 p-lg-2 border-0'>
           <div className='text-dark bg-light p-4 m-lg-2 my-3 border rounded border-info border-1'>
             <div className='mb-3'>
@@ -101,7 +94,7 @@ const RegisterInfo = () => {
                       disabled={isBtnDisabled}
                       type='button'
                       className='btn btn-success'
-                      onClick={claimVotetToken}
+                      onClick={popUpMessage}
                     >
                       Register
                     </button>
@@ -113,21 +106,15 @@ const RegisterInfo = () => {
                           </div>
                         </Modal.Header>
                         <Modal.Body className='h2 p-5 m-2 text-center'>
-                          Your ID will be verifyed and registered in few
+                          Your ID will be verified and registered in few
                           moments:&nbsp;{idNational}
                         </Modal.Body>
                         <Modal.Footer>
-                          <div
-                            className='spinner-grow text-success y-25 w-25'
-                            role='status'
-                          >
-                            <span className='sr-only'>Loading...</span>
-                          </div>
                           <button
-                            className='btn-success p-2 px-3 mx-3 my-2 rounded h4'
-                            onClick={twoInOne}
+                            className='btn-success p-2 px-3 mx-3 my-2 rounded h3'
+                            onClick={claimVotetToken}
                           >
-                            Close
+                            Close to continue
                           </button>
                         </Modal.Footer>
                       </Modal>
@@ -158,35 +145,6 @@ const RegisterInfo = () => {
                 </a>
               </span>
             </div>
-          </div>
-        </div>
-      )}
-      {stateIdRegister == '2' && (
-        <div className='text-dark bg-warning p-4 m-2 my-3 rounded border-1'>
-          <h1 className='text-center pb-4'>
-            You registered but you did not vote!
-          </h1>
-          <div className='my-4'>
-            <span className='h4'>Your address:</span>
-            <span data-testid='accountAddress'>
-              <a
-                className='text-dark h5'
-                href={`${network.explorerAddress}/address/${address}`}
-                {...{
-                  target: '_blank'
-                }}
-                rel='noopener noreferrer'
-                title='View in Explorer'
-              >
-                <DappUI.Trim data-testid='accountAddress' text={address} />
-              </a>
-            </span>
-          </div>
-          <div className='mb-2 text-dark'>
-            <span className='h5'>Your National ID:&nbsp;</span>
-            <span className='h5 font-weight-bold' data-testid=''>
-              AA000000A
-            </span>
           </div>
         </div>
       )}
