@@ -2,7 +2,7 @@
 
 A descentralised onlive voting system developed on the Elrond Network
 
-See [TSI app](https://my-app-ykwk8.ondigitalocean.app/) for live demo.
+See [TSI app](https://my-app-629tx.ondigitalocean.app/) for live demo.
 
 # @elrondnetwork
 

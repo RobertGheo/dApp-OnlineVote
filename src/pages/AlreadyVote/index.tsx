@@ -72,7 +72,7 @@ const VoteDone = () => {
           <div className='card-body d-felx flex-column m-2 p-4'>
             <div className='card bg-light p-lg-5 border-0'>
               <div className='card bg-secondary p-2 p-lg-5 shadow'>
-                <div className='card bg-warning p-2 m-2 col-sm-10 col-md-6 col-lg-4'>
+                <div className='card bg-warning p-2 m-2 col-8 col-sm-10 col-md-6 col-lg-4'>
                   <h2 className='m-1 my-2 font-weight-bold text-center'>
                     Complaints
                   </h2>
@@ -80,7 +80,7 @@ const VoteDone = () => {
                 <div className='pt-4 p-2 mt-4'>
                   <h3 className='text-left text-white mx-auro mr-lg-5 mb-0'>
                     If you wish to make a complaint about the elections or
-                    referendum please use&nbsp;
+                    provide a feedback please access&nbsp;{''}&nbsp;
                     <a
                       onClick={popUpMessage}
                       className='btn text-monospace font-weight-bold badge badge-warning '
