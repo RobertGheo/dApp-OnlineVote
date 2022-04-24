@@ -162,7 +162,7 @@ const RegisterInfo = () => {
           </div>
           <div className='card-body bg-light m-3 p-lg-2 border-0'>
             <div className='text-light bg-info p-3 m-lg-2 my-3 border rounded border-info border-1'>
-              <div className='mx-lg-5 pt-lg-5'>
+              <div className='mx-lg-5 pt-lg-4'>
                 <p className='h5'>
                   For claiming your right to vote, you need to have a small
                   amount of xEgld to cover the transaction fee when interacting
@@ -195,7 +195,7 @@ const RegisterInfo = () => {
                   </div>
                 </div>
               </div>
-              <div className='p-lg-4 mt-3 my-lg-4 mx-lg-5 bg-info'>
+              <div className='p-lg-4 mt-2 my-lg-2 mx-lg-5 bg-info'>
                 <div className='card p-2 bg-info border-0'>
                   <p className='h3 text-warning text-center'>
                     On the Faucet, select Devnet and claim 0.001 xEgld.
