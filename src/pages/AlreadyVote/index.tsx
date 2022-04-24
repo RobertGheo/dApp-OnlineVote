@@ -18,6 +18,11 @@ const VoteDone = () => {
   function popUpMessage() {
     setSuccess(true);
   }
+  //
+  //const refreshAcc = async () => {
+  //  await refreshAccount();
+  //};
+  //refreshAcc();
 
   return (
     <div className='container pt-5 mt-5'>

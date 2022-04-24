@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactComponent as Github } from '../../../assets/img/github_logo.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/img/heart.svg';
+import { ReactComponent as LinkedIn } from '../../../assets/img/linkedin.svg';
 import { ReactComponent as Twitter } from '../../../assets/img/twitter.svg';
 
 const Footer = () => {
@@ -18,7 +19,7 @@ const Footer = () => {
           Network.
         </a>
         <h6 className='mt-2'>
-          R.B{' '}
+          Robert B.{' '}
           <a
             href='https://github.com/RobertGheo/dApp-OnlineVote'
             target='_blank'
@@ -32,6 +33,13 @@ const Footer = () => {
             rel='noopener noreferrer'
           >
             <Twitter className='mx-2' />
+          </a>
+          <a
+            href='https://www.linkedin.com/in/robert-bradu-9a1705174/'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <LinkedIn className='mx-2' />
           </a>
         </h6>
       </div>

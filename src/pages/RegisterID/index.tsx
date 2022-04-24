@@ -20,7 +20,7 @@ const RegisterInfo = () => {
     >(null);
   const { sendTransactions } = transactionServices;
 
-  const claimVotetToken = async () => {
+  const claimVotedToken = async () => {
     const claimTransaction = {
       value: '0',
       gasLimit: new GasLimit(4000000),
@@ -125,7 +125,7 @@ const RegisterInfo = () => {
                           <Modal.Footer>
                             <button
                               className='btn-success p-2 px-3 mx-3 my-2 rounded h3'
-                              onClick={claimVotetToken}
+                              onClick={claimVotedToken}
                             >
                               Close to continue
                             </button>
