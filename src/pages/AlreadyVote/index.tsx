@@ -60,9 +60,9 @@ const VoteDone = () => {
                   </div>
                   <div className=''>
                     <h3 className='text-center mx-3 m-lg-2 py-3 px-lg-4'>
-                      Thankfulness for maintaining that very spirit of
-                      democracy, by actually casting your very vote; which
-                      actually holds so very much importance.
+                      Thankfulness for maintaining that spirit of democracy, by
+                      actually casting your vote; which holds so much importance
+                      now and in the future.
                     </h3>
                   </div>
                 </div>
@@ -80,7 +80,7 @@ const VoteDone = () => {
                 <div className='pt-4 p-2 mt-4'>
                   <h3 className='text-left text-white mx-auro mr-lg-5 mb-0'>
                     If you wish to make a complaint about the elections or
-                    provide a feedback please access&nbsp;{''}&nbsp;
+                    provide some feedback please access{''}&nbsp;
                     <a
                       onClick={popUpMessage}
                       className='btn text-monospace font-weight-bold badge badge-warning '
