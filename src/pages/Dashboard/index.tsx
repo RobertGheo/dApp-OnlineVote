@@ -83,6 +83,7 @@ const Dashboard = () => {
   };
 
   const ballotboxTory = async () => {
+    //await new Promise((resolve) => setTimeout(resolve, 5000));
     const query = new Query({
       address: new Address(contractAddressHex),
       func: new ContractFunction('didUserPing'),
@@ -170,7 +171,7 @@ const Dashboard = () => {
                     </div>
                   </Modal.Header>
                   <Modal.Body className='h2 p-5 my-2 text-center'>
-                    You have already voted successfully.
+                    Your vote has successfully been recorded.
                     <div className='card pt-5 mt-4 border-0'>
                       <div className='card p-3 text-left shadow border-primary'>
                         <span className='h4'>Your address:</span>
@@ -213,7 +214,7 @@ const Dashboard = () => {
                   </div>
                 </Modal.Header>
                 <Modal.Body className='h2 p-5 m-2 text-center'>
-                  You have already voted successfully.
+                  Your vote has successfully been recorded.
                   <div className='card pt-5 mt-4 border-0'>
                     <div className='card p-3 text-left shadow border-danger'>
                       <span className='h4'>Your address:</span>

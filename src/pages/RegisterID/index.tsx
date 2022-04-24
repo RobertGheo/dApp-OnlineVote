@@ -9,16 +9,17 @@ import {
 import { GasLimit } from '@elrondnetwork/erdjs';
 import { Form, Modal } from 'react-bootstrap';
 import { contractClaim } from 'config';
+import { ReactComponent as CopyAddress } from '../../assets/img/copyB.svg';
 
 const RegisterInfo = () => {
   const { address, account } = useGetAccountInfo();
   const { network } = useGetNetworkConfig();
   const isRegistered = Boolean(address);
-
   const /*transactionSessionId*/ [, setTransactionSessionId] = React.useState<
       string | null
     >(null);
   const { sendTransactions } = transactionServices;
+
   const claimVotetToken = async () => {
     const claimTransaction = {
       value: '0',
@@ -68,85 +69,166 @@ const RegisterInfo = () => {
     setSuccess(true);
   }
 
+  function copyToClipboard() {
+    const elem = document.createElement('textarea');
+    elem.value = address;
+    document.body.appendChild(elem);
+    elem.select();
+    document.execCommand('copy');
+    document.body.removeChild(elem);
+  }
+
   return (
     <div className='container-fluid p-1'>
       {isRegistered && (
-        <div className='card bg-light m-3 p-lg-2 border-0'>
-          <div className='text-dark bg-light p-4 m-lg-2 my-3 border rounded border-info border-1'>
-            <div className='mb-3'>
-              <h1 className='text-center font-weight-bold'>Register to Vote</h1>
-            </div>
-            <div className='my-4'>
-              <form className='form-inline justify-content-center'>
-                <div className='form-group mb-2'>
-                  <Form.Group onChange={handleIDChange}>
-                    <input
-                      type='text'
-                      autoComplete='off'
-                      maxLength={9}
-                      minLength={9}
-                      className='form-control'
-                      placeholder='National ID'
-                      id='inputID'
-                      value={idNational}
-                    ></input>
-                    <button
-                      disabled={isBtnDisabled}
-                      type='button'
-                      className='btn btn-success'
-                      onClick={popUpMessage}
-                    >
-                      Register
-                    </button>
-                    {success && (
-                      <Modal show={true} className='p-5'>
-                        <Modal.Header className='badge badge-warning'>
-                          <div className='h3 p-2 mx-2 mt-2 mb-0 text-center'>
-                            User Authentication
-                          </div>
-                        </Modal.Header>
-                        <Modal.Body className='h2 p-5 m-2 text-center'>
-                          Your ID will be verified and registered in few
-                          moments:&nbsp;{idNational}
-                        </Modal.Body>
-                        <Modal.Footer>
-                          <button
-                            className='btn-success p-2 px-3 mx-3 my-2 rounded h3'
-                            onClick={claimVotetToken}
-                          >
-                            Close to continue
-                          </button>
-                        </Modal.Footer>
-                      </Modal>
-                    )}
-                  </Form.Group>
-                </div>
-              </form>
-              <span className='text-center d-flex justify-content-center '>
-                ID example format: AA000000A
-              </span>
-            </div>
-            <div className='p-2 m-1 p-lg-3  mt-lg-5 bg-light border rounded border-info border-1'>
-              <span className='h5'>Your address:&nbsp;</span>
-              <span data-testid='accountAddress'>
-                <a
-                  className='text-dark'
-                  href={`${network.explorerAddress}/address/${address}`}
-                  {...{
-                    target: '_blank'
-                  }}
-                  rel='noopener noreferrer'
-                  title='View in Explorer'
-                >
-                  <DappUI.Trim
-                    data-testid='accountAddress'
-                    text={account.address}
-                  />
-                </a>
-              </span>
+        <>
+          <div className='card-header bg-light m-3 p-lg-2 border-0'>
+            <div className='text-dark bg-light p-4 m-lg-2 my-3 border rounded border-info border-1'>
+              <div className='mb-3'>
+                <h1 className='text-center font-weight-bold'>
+                  Register to Vote
+                </h1>
+              </div>
+              <div className='my-4'>
+                <form className='form-inline justify-content-center'>
+                  <div className='form-group mb-2'>
+                    <Form.Group onChange={handleIDChange}>
+                      <input
+                        type='text'
+                        autoComplete='off'
+                        maxLength={9}
+                        minLength={9}
+                        className='form-control'
+                        placeholder='National ID'
+                        id='inputID'
+                        value={idNational}
+                      ></input>
+                      <button
+                        disabled={isBtnDisabled}
+                        type='button'
+                        className='btn btn-success'
+                        onClick={popUpMessage}
+                      >
+                        Register
+                      </button>
+                      {success && (
+                        <Modal show={true} className='p-5'>
+                          <Modal.Header className='badge badge-warning'>
+                            <div className='h3 p-2 mx-2 mt-2 mb-0 text-center'>
+                              User Authentication
+                            </div>
+                          </Modal.Header>
+                          <Modal.Body className='h2 p-5 m-2 text-center'>
+                            Your ID will be verified and registered in few
+                            moments:&nbsp;{idNational}
+                          </Modal.Body>
+                          <Modal.Footer>
+                            <button
+                              className='btn-success p-2 px-3 mx-3 my-2 rounded h3'
+                              onClick={claimVotetToken}
+                            >
+                              Close to continue
+                            </button>
+                          </Modal.Footer>
+                        </Modal>
+                      )}
+                    </Form.Group>
+                  </div>
+                </form>
+                <span className='text-center d-flex justify-content-center '>
+                  ID example format: AA000000A
+                </span>
+              </div>
+              <div className='p-2 m-1 p-lg-3 mt-lg-5 bg-light border rounded border-info border-1'>
+                <span className='h5'>Your address:&nbsp;</span>
+                <span data-testid='accountAddress'>
+                  <a
+                    className='text-dark'
+                    href={`${network.explorerAddress}/address/${address}`}
+                    {...{
+                      target: '_blank'
+                    }}
+                    rel='noopener noreferrer'
+                    title='View in Explorer'
+                  >
+                    <DappUI.Trim
+                      data-testid='accountAddress'
+                      text={account.address}
+                    />
+                  </a>
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+          <div className='card-body bg-light m-3 p-lg-2 border-0'>
+            <div className='text-light bg-info p-3 m-lg-2 my-3 border rounded border-info border-1'>
+              <div className='mx-lg-5 pt-lg-5'>
+                <p className='h5'>
+                  For claiming your right to vote, you need to have a small
+                  amount of xEgld to cover the transaction fee when interacting
+                  with the smart contracts ballot box.
+                </p>
+                <div className='card mt-4 px-md-0 px-lg-4 bg-info border-0'>
+                  <div className='row'>
+                    <div className='col-md-5 col-lg-3'>
+                      <div className='card bg-info border-dark border-0 '>
+                        <p className='h6 m-2 text-center'>Copy your address:</p>
+                      </div>
+                    </div>
+                    <div className='col-md-10 col-lg-7'>
+                      <div className='card bg-info mt-md-0 border-dark border-0'>
+                        <div className='h6 text-center m-2 m-lg-2 m-md-2'>
+                          <DappUI.Trim
+                            data-testid='accountAddress'
+                            id='copyAddress'
+                            text={account.address}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      className='btn col-sm-12 col-md-1 col-lg-1'
+                      onClick={copyToClipboard}
+                    >
+                      <CopyAddress />
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className='p-lg-4 mt-3 my-lg-4 mx-lg-5 bg-info'>
+                <div className='card p-2 bg-info border-0'>
+                  <p className='h3 text-warning text-center'>
+                    On the Faucet, select Devnet and claim 0.001 xEgld.
+                  </p>
+                </div>
+                <div className='row'>
+                  <div className='col-md-8 col-lg-9'>
+                    <div className='card bg-info border-dark border-1'>
+                      <p className='h4 m-2'>
+                        Access this Faucet to recieve xEgld to cover your vote
+                        process
+                      </p>
+                    </div>
+                  </div>
+                  <div className='col-md-4 col-lg-3'>
+                    <div className='card bg-warning mt-4 mt-md-0 border-dark border-1'>
+                      <div className='text-center m-2 m-lg-2 m-md-4'>
+                        <a
+                          href='https://r3d4.fr/faucet'
+                          className='h4 stretched-link text-dark text-decoration-none'
+                          target='_blank'
+                          rel='noopener noreferrer'
+                        >
+                          Claim xEgld
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );

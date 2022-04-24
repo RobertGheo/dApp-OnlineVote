@@ -49,7 +49,7 @@ const VoteDone = () => {
                     </span>
                   </div>
                   <div className=''>
-                    <h3 className='text-center mx-3 m-lg-4 py-4 px-lg-4'>
+                    <h3 className='text-center mx-3 m-lg-4 py-3 px-lg-4'>
                       Thankfulness for maintaining that very spirit of
                       democracy, by actually casting your very vote; which
                       actually holds so very much importance.
