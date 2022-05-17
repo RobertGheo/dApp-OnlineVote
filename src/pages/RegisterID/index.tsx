@@ -62,10 +62,10 @@ const RegisterInfo = () => {
   }
 
   function twoInOneCall() {
-    //await new Promise((resolve) => setTimeout(resolve, 3000));
     setIdNational(() => '');
     setSuccess(false);
   }
+
   function popUpMessage() {
     setSuccess(true);
     fetch('https://api.r3d4.fr/faucet/list', {
