@@ -62,6 +62,7 @@ const ActionsBlue = () => {
 
   const { sendTransactions } = transactionServices;
 
+  //send vote token to the tory ballot boxx
   const sendPingTransaction = async () => {
     const pingTransaction = {
       value: '0',

@@ -106,7 +106,7 @@ const Dashboard = () => {
         console.error('Unable to call VM query', err);
       });
   };
-
+  //function to check if the user has voted
   const ballotboxLabour = async () => {
     const query = new Query({
       address: new Address(contractAddressHex1),
