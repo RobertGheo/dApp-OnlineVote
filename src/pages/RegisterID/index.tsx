@@ -86,7 +86,7 @@ const RegisterInfo = () => {
     reset();
   }
   //set the CountDown Timer
-  const [time, setTime] = React.useState(61);
+  const [time, setTime] = React.useState(55);
   const tick = () => {
     if (time === 0) {
       setIsTimePass(false);
@@ -96,7 +96,7 @@ const RegisterInfo = () => {
       setIsTimePass(true);
     }
   };
-  const reset = () => setTime(61);
+  const reset = () => setTime(55);
   React.useEffect(() => {
     const timerId = setInterval(() => tick(), 1000);
     return () => clearInterval(timerId);
