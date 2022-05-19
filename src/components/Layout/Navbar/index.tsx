@@ -68,6 +68,18 @@ const Navbar = () => {
               </Link>
             </NavItem>
           )}
+          {!isLoggedIn && !isCheckPage && (
+            <NavItem>
+              <a
+                href='https://devnet-wallet.elrond.com/create'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='btn btn-outline-success shadow btn-lg m-3'
+              >
+                Create
+              </a>
+            </NavItem>
+          )}
         </Nav>
       </div>
     </BsNavbar>
