@@ -16,7 +16,7 @@ const Home = () => {
         <li className='list-group-item'>
           <div className='d-flex justify-content-center'>
             <div className='row  w-100 py-4 px-2'>
-              <div className='col-10 col-md-10 col-lg-12 mx-auto'>
+              <div className='col-sm-12 col-md-12 col-lg-12 mx-auto'>
                 <div className='card shadow border-info bg-light rounded p-1 border-1'>
                   <div className='card-body text-center'>
                     <h1 className='mb-3 font-weight-bold' data-testid='title'>
@@ -39,23 +39,23 @@ const Home = () => {
         <li className='list-group-item'>
           <div className='d-flex justify-content-center'>
             <div className='row  w-100 py-4 px-2'>
-              <div className='col-10 col-md-10 col-lg-12 mx-auto'>
+              <div className='col-sm-12 col-md-12 col-lg-12 mx-auto'>
                 <div className='card shadow border-info bg-light  border-1'>
                   <div className='card-header bg-light border-info border-1'>
                     <h1 className='text-center font-weight-bold mt-1'>
                       General Election in United Kindom - 2024
                     </h1>
                   </div>
-                  <div className='card-body p-3'>
+                  <div className='card-body'>
                     <h3 className='text-center font-weight-bold'>
                       The Race for U.K. Prime Minister:
                     </h3>
                     <h4 className='text-center'>
                       Two Parties and Two Leaders.
                     </h4>
-                    <div className='col-12 col-md-10 col-lg-12 mx-auto'>
-                      <div className='card-deck py-4 px-4'>
-                        <div className='card-lg col col-lg-14'>
+                    <div className='col-12 col-md-12 col-lg-12 mx-auto'>
+                      <div className='card-deck py-4 px-lg-4'>
+                        <div className='card-lg col '>
                           <div className='card-lg col d-flex justify-content-center p-1 shadow border-primary bg-primary rounded border-1'>
                             <div className='card bg-light border-primary border-1 p-2 m-0'>
                               <h3 className='text-center mt-3 text-primary'>
@@ -72,10 +72,10 @@ const Home = () => {
                           </div>
                         </div>
                         <div className='card-lg p-lg-5 py-4'></div>
-                        <div className='card-lg col col-lg-14'>
+                        <div className='card-lg col'>
                           <div className='card-lg col d-flex justify-content-center p-1 shadow border-danger bg-danger rounded border-1'>
                             <div className='card bg-light border border-danger border-1 p-2 m-0'>
-                              <h3 className='text-center px-3 mt-3 text-danger'>
+                              <h3 className='text-center mt-3 text-danger'>
                                 Labour Party Votes
                               </h3>
                               <div className='card d-flex justify-content-center p-4 bg-light border-0'>
@@ -124,7 +124,7 @@ const Home = () => {
           </div>
         </li>
         <li className='list-group-item '>
-          <div className='col-10 col-md-10 col-lg-12 mx-auto'>
+          <div className='col-sm-12 col-md-12 col-lg-12 mx-auto'>
             <div className='card-deck py-4 px-2 '>
               <div className='card d-flex justify-content-center shadow border-primary bg-light rounded border-1'>
                 <img
