@@ -26,7 +26,7 @@ const VoteDone = () => {
 
   return (
     <div className='container pt-5 mt-5'>
-      <div className='col-10 col-md-10 col-lg-12 mx-auto'>
+      <div className='col-sm-12 col-md-12 col-lg-12 mx-auto'>
         <div className='card d-flex justify-content-center shadow bg-light rounded border-1'>
           <div className='card-header bg-light'>
             <div className='container-fluid p-1'>
