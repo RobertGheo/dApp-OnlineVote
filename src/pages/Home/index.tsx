@@ -15,7 +15,7 @@ const Home = () => {
       <ul className='list-group'>
         <li className='list-group-item'>
           <div className='d-flex justify-content-center'>
-            <div className='row  w-100 py-4 px-2'>
+            <div className='row w-100 py-4 px-2'>
               <div className='col-sm-12 col-md-12 col-lg-12 mx-auto'>
                 <div className='card shadow border-info bg-light rounded p-1 border-1'>
                   <div className='card-body text-center'>
@@ -57,7 +57,7 @@ const Home = () => {
                       <div className='card-deck py-4 px-lg-4'>
                         <div className='card-lg col '>
                           <div className='card-lg col d-flex justify-content-center p-1 shadow border-primary bg-primary rounded border-1'>
-                            <div className='card bg-light border-primary border-1 p-2 m-0'>
+                            <div className='card bg-light border border-primary border-1 p-2 m-0'>
                               <h3 className='text-center mt-3 text-primary'>
                                 Conservative Party Votes
                               </h3>

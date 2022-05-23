@@ -107,7 +107,7 @@ const RegisterInfo = () => {
     <div className='container-fluid p-1'>
       {isRegistered && (
         <>
-          <div className='card-header bg-light m-3 p-lg-2 border-0'>
+          <div className='card bg-light p-lg-2 border-0'>
             <div className='text-dark bg-light p-4 m-lg-2 my-3 border rounded border-info border-1'>
               <div className='mb-3'>
                 <h1 className='text-center font-weight-bold'>

@@ -137,7 +137,7 @@ const Dashboard = () => {
 
   return (
     <div className='container pt-5 mt-5'>
-      <div className='col-10 col-md-10 col-lg-12 mx-auto'>
+      <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12 mx-auto'>
         <div className='card d-flex justify-content-center shadow bg-light rounded border-1'>
           <>
             {!voteClaim && !hasVotedTory && !hasVotedLabour && (
@@ -154,7 +154,7 @@ const Dashboard = () => {
                     <ClaimedToken />
                   </div>
                 </div>
-                <div className='card-body d-felx flex-column p-4'>
+                <div className='card-body d-felx flex-column p-sm-2 p-md-2 p-lg-4'>
                   <StatutsVote />
                   <div className='pt-1'></div>
                 </div>
