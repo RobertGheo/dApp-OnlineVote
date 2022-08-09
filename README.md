@@ -1,6 +1,6 @@
 # TSI- Online Voting Dapp
 
-A descentralised onlive voting system developed on the Elrond Network
+A decentralised online voting system developed on the Elrond Network.
 
 See [TSI app](https://my-app-629tx.ondigitalocean.app/) for live demo.
 
