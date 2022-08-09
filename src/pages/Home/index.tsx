@@ -24,7 +24,7 @@ const Home = () => {
                     </h1>
 
                     <h5 className='mb-2'>
-                      An descentralised online voting system developed on the
+                      A decentralised online voting system developed on the
                       Elrond Network.
                     </h5>
                     <h2 className='text-primary mt-3 font-weight-bold'>
